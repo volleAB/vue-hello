@@ -1,0 +1,59 @@
+<template>
+  <div id="detail">
+    <div class="movie-detail-img">
+      <img :src="filmDetail.cover.origin" alt="">
+    </div>
+    <div class="movie-detail-info">
+      <h3>影片介绍</h3>
+      <button class="bubbly-button">喜欢</button>
+      <p>
+        导演：{{filmDetail.director}}<br/>
+        主演：<span v-for="(item, index) in filmDetail.actors" :key="index">{{item.name}} | </span><br/>
+        地区语言：{{filmDetail.nation}}（{{filmDetail.language}}）<br/>
+        类型：{{filmDetail.category}}<br/>
+        上映时间：{{filmDetail.premiereAt}}<br/>
+        {{filmDetail.synopsis}}
+      </p>
+    </div>
+    <div class="buy">立即购票</div>
+  </div>
+</template>
+
+<script>
+require('../assets/sass/detail.sass')
+import axios from 'axios'
+
+export default {
+  data () {
+    return {
+      filmDetail: []
+    }
+  },
+  beforeCreate () {
+
+  },
+  created () {
+    //TODO
+    let newId = this.$route.params.id;
+    // console.log(newId);
+    let url = '/v4/api/film/' + newId + '?__t=1532153429284'
+    let ajax = (method, url) => {
+      return axios({
+          method: method,
+          baseURL: '/api',
+          url: url
+        })
+    }
+    let getFilmDetail = new ajax('get', url)
+      .then((res) => {
+        this.filmDetail = res.data.data.film;
+        console.log(res.data.data.film);
+      }).catch((err) => {
+        console.log(err);
+      })
+  },
+  methods: {
+
+  }
+}
+</script>
