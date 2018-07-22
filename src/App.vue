@@ -24,7 +24,7 @@ export default {
   methods: {
     setActive(data) {
       this.isActive = data;
-      console.log(data);
+      console.log(this.isActive);
     },
     // hideHeader() {
 

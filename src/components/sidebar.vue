@@ -3,7 +3,7 @@
     <ul>
       <li class="item" v-for="(item, index) in menuList" v-bind:key="index">
         <router-link :to='item.path'>
-          <span>{{item.name}}</span>
+          <span @click="hideSide">{{item.name}}</span>
           <i class="icon iconfont icon-right"></i>
         </router-link>
       </li>
@@ -37,6 +37,7 @@ export default {
       ]
       return {
         menuList: menuList,
+        thisActive: Boolean
 			}
   },
   props: {
@@ -44,7 +45,11 @@ export default {
   },
   methods: {
     get: function () {
-      console.log(this.Active);
+      console.log(this.thisActive);
+    },
+    hideSide () {
+      this.thisActive = false;
+      console.log(this.thisActive);
     }
   }
 }

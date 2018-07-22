@@ -1,0 +1,67 @@
+
+body
+  background: #ffffff
+
+#film
+  width: 100%
+  margin: 58px 0
+  .container
+    width: 90%
+    margin: 0 auto
+    .film-type
+      width: 100%
+      border-bottom: 1px solid #fe6e00
+      cursor: pointer
+      .film-now,
+      .film-soon
+        width: 50%
+        padding: 10px 20px
+        color: #6a6a6a
+      .active
+        border-bottom: 3px solid #fe6e00
+        color: #fe6e00
+    .film
+      transition: all 0.2s cubic-bezier(0.55, 0, 0.1, 1)
+      .film-item
+        height: 200px
+        border-bottom: 1px dashed #c9c9c9
+        cursor: pointer
+      img
+        float: left
+        width: 100px
+        height: 140px
+        margin-top: 20px
+      .film-info
+        position: relative
+        width: 100%
+        padding: 10px 0 20px 120px
+        text-align: left
+        color: #8e8e8e
+        h3
+          display: inline-block
+          color: #000000
+        span
+          line-height: 3
+          color: #8aa2bf
+        .grade
+          position: absolute
+          top: 30px
+          right: 30px
+          color: #fc7103
+          &:after
+            content: '>'
+            margin-left: 4px
+            font-size: 20px
+            color: #a5a5a5
+
+.showUp
+  animation: showUp .8s ease-in-out 0.3s 1
+
+@keyframes showUp
+  0%
+    margin-top: 20px
+    opacity: 0
+  100%
+    margin-top: 0px
+    opacity: 1
+

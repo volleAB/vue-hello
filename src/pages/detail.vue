@@ -11,7 +11,7 @@
         主演：<span v-for="(item, index) in filmDetail.actors" :key="index">{{item.name}} | </span><br/>
         地区语言：{{filmDetail.nation}}（{{filmDetail.language}}）<br/>
         类型：{{filmDetail.category}}<br/>
-        上映时间：{{filmDetail.premiereAt}}<br/>
+        上映时间：{{filmDetail.premiereAt|getDay}}<br/>
         {{filmDetail.synopsis}}
       </p>
     </div>
@@ -29,9 +29,15 @@ export default {
       filmDetail: []
     }
   },
-  beforeCreate () {
-
-  },
+  filters:{
+    getDay:function(time){
+      let date = new Date(time*1),
+          year = date.getFullYear(),
+          month = date.getMonth()+1 > 9 ? date.getMonth()+1 : '0' + (date.getMonth() + 1),
+          day = date.getDate() > 9 ? date.getDate() : '0' + date.getDate();
+      return year + '-' + month + '-' + day;
+    }
+	},
   created () {
     //TODO
     let newId = this.$route.params.id;

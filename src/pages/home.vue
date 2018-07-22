@@ -19,7 +19,7 @@
                   <div class="movie-item-img">
                     <img :src="item.cover.origin" alt="">
                   </div>
-                  <div class="movie-item-info">
+                  <div class="movie-item-info clearfix">
                     <div class="movie-item-name fl">
                       {{item.name}}<br/>
                       <span>{{item.cinemaCount}}家影院上映 {{item.watchCount}}人购票</span>
@@ -45,7 +45,7 @@
                   <div class="movie-item-img">
                     <img :src="item.cover.origin" alt="">
                   </div>
-                  <div class="movie-item-info">
+                  <div class="movie-item-info clearfix">
                     <div class="movie-item-name fl">
                       {{item.name}}<br/>
                       <span>{{item.intro}}</span>
