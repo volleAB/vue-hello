@@ -4,6 +4,8 @@ import Home from '../pages/home'
 import Film from '../pages/film'
 import Detail from '../pages/detail'
 import Mine from '../pages/mine'
+import Cinema from '../pages/cinema'
+import CinemaInfo from '../pages/cinemaInfo'
 // import HelloWorld from '@/components/HelloWorld'
 
 Vue.use(Router)
@@ -51,6 +53,22 @@ const routes = [
     component: Detail,
     meta: {
       title: '详情页'
+    }
+  },
+  {
+    path: '/cinema',
+    name: 'cinema',
+    component: Cinema,
+    meta: {
+      title: '影院'
+    }
+  },
+  {
+    path: '/cinema/:id',
+    name: 'cinemaInfo',
+    component: CinemaInfo,
+    meta: {
+      title: '影院'
     }
   },
   {

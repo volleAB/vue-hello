@@ -68,7 +68,7 @@
 </template>
 
 <script>
-require('../assets/sass/home.sass');
+require('../assets/scss/home.scss');
 import axios from 'axios'
 import {swiper,swiperSlide} from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'

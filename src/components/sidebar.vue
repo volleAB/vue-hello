@@ -13,7 +13,7 @@
 
 <script>
 require('../assets/icon/iconfont.css')
-require('../assets/sass/sidebar.sass')
+require('../assets/scss/sidebar.scss')
 
 export default {
   data() {

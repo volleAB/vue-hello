@@ -1,11 +1,11 @@
 <template>
   <div id="detail">
     <div class="movie-detail-img">
-      <img :src="filmDetail.cover.origin" alt="">
+      <img :src="filmDetail.cover.origin">
     </div>
     <div class="movie-detail-info">
       <h3>影片介绍</h3>
-      <button class="bubbly-button">喜欢</button>
+      <button class="bubbly-button" @click="goGet">喜欢</button>
       <p>
         导演：{{filmDetail.director}}<br/>
         主演：<span v-for="(item, index) in filmDetail.actors" :key="index">{{item.name}} | </span><br/>
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-require('../assets/sass/detail.sass')
+require('../assets/scss/detail.scss')
 import axios from 'axios'
 
 export default {
@@ -59,7 +59,11 @@ export default {
       })
   },
   methods: {
+    goGet () {
+      store.commit('increment')
 
+      console.log(store.state.count) // -> 1
+    }
   }
 }
 </script>

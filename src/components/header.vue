@@ -17,7 +17,7 @@
 
 <script>
 require('../assets/icon/iconfont.css');
-require('../assets/sass/header.sass');
+require('../assets/scss/header.scss');
 export default {
   data() {
     return{

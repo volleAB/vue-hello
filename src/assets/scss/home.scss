@@ -1,0 +1,119 @@
+@import 'common.scss';
+
+body {
+  background-color: #e1e1e1;
+}
+
+#home {
+  width: 100%;
+  margin-top: 58px;
+  color: #000000;
+  .banner {
+    position: relative;
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+    background-blend-mode: multiply,multiply;
+    .banner-swiper {
+      top: 20px;
+      img {
+        max-width: 800px;
+        width: 100%;
+      }
+    }
+  }
+  .container {
+    max-width: 560px;
+    width: 80%;
+    margin: 0 auto;
+    .home-view {
+      margin-top: 40px;
+      a {
+        color: #000000;
+      }
+      .movie-item {
+        box-shadow: 0.5px 0.5px 1px #a8a8a8;
+        transition: all .3s ease-in-out;
+        cursor: pointer;
+        &:hover {
+          box-shadow: 6px 5px 18px 2px #5c5c5c
+        }
+        .movie-item-img {
+          background: #ffffff;
+          img {
+            width: 100%;
+          }
+        }
+        .movie-item-info {
+          width: 100%;
+          max-height: 60px;
+          height: 50px;
+          margin-bottom: 30px;
+          border-radius: 2px;
+          background: #ffffff;
+          .movie-item-name {
+            width: 80%;
+            padding: 4px 0 0 10px;
+            text-align: left;
+            font-size: 16px;
+            span {
+              font-size: 12px;
+              color: #9a9a9a;
+            }
+          }
+          .movie-item-grade {
+            padding: 10px;
+            font-size: 20px;
+            color: #f78360;
+          }
+        }
+      }
+    }
+    .more {
+      position: relative;
+      max-width: 280px;
+      min-width: 160px;
+      height: 30px;
+      border: 1px solid #aaa;
+      border-radius: 15px;
+      margin: 10px auto 30px;
+      text-align: center;
+      line-height: 30px;
+      font-size: 12px;
+      color: #616161;
+      cursor: pointer;
+      transition: all .3s ease-in-out;
+      &:hover {
+        border-color: #FF9800;
+        box-shadow: 3px 2px 10px 1px #9b9b9b;
+        background: #FF9800;
+        color: #795548;
+      }
+    }
+    .soon {
+      margin: 40px 0;
+      .soon-line {
+        position: relative;
+        width: 100%;
+        margin-bottom: 30px;
+        border-top: 1px solid #a8a8a8;
+        &:before {
+          position: absolute;
+          top: -10px;
+          left: 50%;
+          content: '即将上映';
+          width: 100px;
+          height: 20px;
+          margin-left: -50px;
+          border-radius: 4px;
+          background: #a7a7a7;
+          color: #eeeeee;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
