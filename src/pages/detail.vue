@@ -5,7 +5,7 @@
     </div>
     <div class="movie-detail-info">
       <h3>影片介绍</h3>
-      <button class="bubbly-button" @click="goGet">喜欢</button>
+      <button class="bubbly-button" @click="$store.dispatch('switch_conut')">喜欢</button>
       <p>
         导演：{{filmDetail.director}}<br/>
         主演：<span v-for="(item, index) in filmDetail.actors" :key="index">{{item.name}} | </span><br/>
@@ -15,13 +15,14 @@
         {{filmDetail.synopsis}}
       </p>
     </div>
-    <div class="buy">立即购票</div>
+    <div class="buy" @click="goCinema">立即购票</div>
   </div>
 </template>
 
 <script>
-require('../assets/scss/detail.scss')
-import axios from 'axios'
+require('../assets/scss/detail.scss');
+import axios from 'axios';
+import {mapGetters, mapActions} from 'vuex';
 
 export default {
   data () {
@@ -58,11 +59,13 @@ export default {
         console.log(err);
       })
   },
+  computed: {
+    // mapGetters(['gettersMsg']),
+  },
   methods: {
-    goGet () {
-      store.commit('increment')
-
-      console.log(store.state.count) // -> 1
+    goCinema () {
+      this.$router.push({name: 'cinema'});
+      this.$store.state.movieName = this.filmDetail.name;
     }
   }
 }

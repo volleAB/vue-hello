@@ -1,9 +1,50 @@
 <template>
   <div id="pay">
-    <div class="pay-info"></div>
-    <div class="pay-mon"></div>
-    <div class="com">
+    <div class="container">
+      <img src="../assets/images/pay.jpg" alt="pay">
+      <div class="pay-info">
+        <div class="cinema-name clearfix">
+          <i class="icon iconfont icon-bulb"></i>
+          <div class="cinema-location">{{movie}}</div>
+        </div>
+        <div class="cinema-name clearfix">
+          <i class="icon iconfont icon-movie"></i>
+          <div class="cinema-location">{{cinema}}</div>
+        </div>
+        <div class="cinema-name clearfix">
+          <i class="icon iconfont icon-ticket"></i>
+          <div class="cinema-location">座位：{{row}}行{{col}}列</div>
+        </div>
+        <div class="cinema-name clearfix">
+          <i class="icon iconfont icon-ticket"></i>
+          <div class="cinema-location">金额为：50元</div>
+        </div>
+      </div>
+    </div>
+    <div class="buy">
       购买
     </div>
   </div>
 </template>
+
+<script>
+require('../assets/scss/pay.scss')
+
+export default {
+  data () {
+    return {
+      col: '',
+      row: '',
+      moive: '',
+      cinema: ''
+    }
+  },
+  created () {
+    this.col = this.$route.query.col;
+    this.row = this.$route.query.row;
+    this.movie = this.$store.state.movieName;
+    this.cinema = this.$store.state.cinemaName;
+    console.log(this.cinema)
+  }
+}
+</script>

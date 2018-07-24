@@ -6,6 +6,7 @@ import Detail from '../pages/detail'
 import Mine from '../pages/mine'
 import Cinema from '../pages/cinema'
 import CinemaInfo from '../pages/cinemaInfo'
+import Pay from '../pages/pay'
 // import HelloWorld from '@/components/HelloWorld'
 
 Vue.use(Router)
@@ -78,7 +79,15 @@ const routes = [
     meta: {
       title: '个人中心'
     }
-  }
+  },
+  {
+    path: '/pay',
+    name: 'pay',
+    component: Pay,
+    meta: {
+      title: '支付中心'
+    }
+  },
 ]
 
 const router = new Router({

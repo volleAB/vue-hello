@@ -1,9 +1,9 @@
 <template>
-  <div id="sidebar" :class="{active: Active}" @click="get">
+  <div id="sidebar" :class="{active: this.$store.state.show}" @click="get">
     <ul>
       <li class="item" v-for="(item, index) in menuList" v-bind:key="index">
         <router-link :to='item.path'>
-          <span @click="hideSide">{{item.name}}</span>
+          <span @click="$store.dispatch('switch_show')">{{item.name}}</span>
           <i class="icon iconfont icon-right"></i>
         </router-link>
       </li>

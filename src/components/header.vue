@@ -1,6 +1,6 @@
 <template>
   <div id="header">
-    <div class="menu" @click="showNav"><i class="icon iconfont icon-menu"></i></div>
+    <div class="menu" @click="$store.dispatch('switch_show')"><i class="icon iconfont icon-menu"></i></div>
     <div class="my-icon">
       <p>{{title}}</p>
     </div>

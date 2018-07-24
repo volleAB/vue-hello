@@ -69,9 +69,10 @@
 
 <script>
 require('../assets/scss/home.scss');
+import 'swiper/dist/css/swiper.css'
 import axios from 'axios'
 import {swiper,swiperSlide} from 'vue-awesome-swiper'
-import 'swiper/dist/css/swiper.css'
+import {mapActions} from 'vuex'
 
 export default {
   name: "home",
@@ -126,6 +127,7 @@ export default {
       }).catch((err) => {
         console.log(err);
       })
+      // this.$store.dispatch('switch_conut')
   },
   components: {
     swiper,
