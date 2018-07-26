@@ -6,7 +6,7 @@
     </div>
     <div class="right-item">
       <div class="city">武汉<i class="icon iconfont icon-bottom"></i></div>
-      <router-link :to="{name: 'mine'}">
+      <router-link :to="{name: 'login'}">
         <div class="mine">
           <i class="icon iconfont icon-people"></i>
         </div>

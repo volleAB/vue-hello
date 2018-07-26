@@ -1,0 +1,83 @@
+body {
+  background-color: #f6f6f6;
+}
+
+#login {
+  width: 100%;
+  height: 400px;
+  margin: 100px auto;
+  .form-group {
+    position: relative;
+    max-width: 600px;
+    width: 90%;
+    margin: 0 auto;
+    input {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 60px;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 0px;
+      box-shadow: none;
+      outline: none;
+      background-color: #f6f6f6;
+      font-size: 20px;
+      line-height: 1.42857143;
+      color: #555;
+    }
+    .input-bg {
+      position: absolute;
+      top: 36px;
+      width: 100%;
+      height: 12px;
+      border-bottom:1px solid #c4c4c4;
+    }
+  }
+  button {
+    width: 163px;
+    background-color: #fe8233;
+    color: #fff;
+    border: none;
+    border-radius: 36px;
+    margin-top: 45px;
+    padding: 8px 12px;
+    font-size: 15px;
+    outline: none;
+  }
+}
+
+
+#mine {
+  width: 100%;
+  height: 400px;
+  margin: 58px auto;
+  .user {
+    width: 100%;
+    img {
+      max-width: 600px;
+      width: 100%;
+      height: 240px;
+    }
+    .user-show {
+      max-width: 600px;
+      width: 100%;
+      height: 240px;
+      margin-top: 20px;
+      .user-info {
+        width: 100%;
+        height: 240px;
+        padding: 20px;
+        border-radius: 10px;
+        background: #ff98003d;
+      }
+      .user-movie {
+        width: 100%;
+        height: 240px;
+        padding: 20px;
+        border-radius: 10px;
+        background: #03a9f447;
+      }
+    }
+  }
+}

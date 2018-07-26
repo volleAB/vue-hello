@@ -1,6 +1,6 @@
 <template>
   <div id="pay">
-    <div class="container">
+    <div class="container" @click="on = false">
       <img src="../assets/images/pay.jpg" alt="pay">
       <div class="pay-info">
         <div class="cinema-name clearfix">
@@ -20,8 +20,11 @@
           <div class="cinema-location">金额为：50元</div>
         </div>
       </div>
+      <div class="box" :class="{block: on}">
+        购买成功
+      </div>
     </div>
-    <div class="buy">
+    <div class="buy" @click="on = true">
       购买
     </div>
   </div>
@@ -36,7 +39,8 @@ export default {
       col: '',
       row: '',
       moive: '',
-      cinema: ''
+      cinema: '',
+      on: false
     }
   },
   created () {
@@ -45,6 +49,9 @@ export default {
     this.movie = this.$store.state.movieName;
     this.cinema = this.$store.state.cinemaName;
     console.log(this.cinema)
+  },
+  methods: {
+
   }
 }
 </script>

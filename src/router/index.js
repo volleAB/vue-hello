@@ -7,6 +7,7 @@ import Mine from '../pages/mine'
 import Cinema from '../pages/cinema'
 import CinemaInfo from '../pages/cinemaInfo'
 import Pay from '../pages/pay'
+import Login from '../pages/login'
 // import HelloWorld from '@/components/HelloWorld'
 
 Vue.use(Router)
@@ -88,6 +89,14 @@ const routes = [
       title: '支付中心'
     }
   },
+  {
+    path: '/login',
+    name: 'login',
+    component: Login,
+    meta: {
+      title: '登录'
+    }
+  },
 ]
 
 const router = new Router({
@@ -101,9 +110,22 @@ const app = new Vue({
 router.beforeEach((to, from, next) => {
   /* 路由发生变化修改页面title */
   if (to.meta.title) {
-    document.title = to.meta.title
+    document.title = to.meta.title;
   }
-  next()
+  // let token = store.state.token;
+  // if (to.meta.requiresAuth) {
+  //   if (token) {
+  //     next();
+  //   } else {
+  //     next({
+  //       path: '/login',
+  //       query: { redirect: to.fullPath } // 将刚刚要去的路由path作为参数，方便登录成功后直接跳转到该路由
+  //     });
+  //   }
+  // } else {
+  //   next();
+  // }
+  next();
 })
 
 export default router;

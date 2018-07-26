@@ -1,9 +1,10 @@
 const state = {
   count: 0,
-  arr: [0,1,2,3,4,5],
   show: false,
   movieName: '',
-  cinemaName: ''
+  cinemaName: '',
+  token: window.sessionStorage.getItem('token'),
+  username: ''
 }
 
 export default state;

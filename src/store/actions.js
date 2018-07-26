@@ -5,8 +5,14 @@ const actions = {
   switch_conut(context) {
     context.commit('switch_conut');
   },
-  getList(context) {
-    context.commit('getList');
+  UserLogin({ commit }, data){
+    commit('LOGIN', data);
+  },
+  UserLogout({ commit }){
+      commit('LOGOUT');
+  },
+  UserName({ commit }, data){
+      commit('USERNAME', data);
   }
 }
 
