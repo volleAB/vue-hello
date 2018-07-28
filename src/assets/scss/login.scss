@@ -3,6 +3,7 @@ body {
 }
 
 #login {
+  position: relative;
   width: 100%;
   height: 400px;
   margin: 100px auto;
@@ -45,6 +46,9 @@ body {
     font-size: 15px;
     outline: none;
   }
+  .register {
+    background: #03A9F4;
+  }
 }
 
 
@@ -79,5 +83,44 @@ body {
         background: #03a9f447;
       }
     }
+  }
+}
+
+.login-item {
+  display: none;
+}
+
+.loginUp {
+  display: block !important;
+  animation: loginShow 2s cubic-bezier(0.4, 0, 1, 1) 0s 1;
+}
+
+.register-item {
+  display: none;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  backface-visibility: hidden;
+}
+
+
+@keyframes loginShow {
+  0% {
+    top: -30px;
+    right: -30px;
+    opacity: 0;
+    transform: perspective(500px) translate3d(10px, 0px, -50px) rotatey(90deg);
+  }
+  50% {
+    top: -15px;
+    right: -15px;
+    opacity: 0.5;
+    transform: perspective(250px) translate3d(5px, 0px, -25px) rotatey(45deg);
+  }
+  50% {
+    top: 0;
+    right: 0;
+    opacity: 1;
+    transform: perspective(0px) translate3d(0px, 0px, 0px) rotatey(0deg);
   }
 }

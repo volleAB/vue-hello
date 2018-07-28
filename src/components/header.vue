@@ -6,11 +6,9 @@
     </div>
     <div class="right-item">
       <div class="city">武汉<i class="icon iconfont icon-bottom"></i></div>
-      <router-link :to="{name: 'login'}">
-        <div class="mine">
-          <i class="icon iconfont icon-people"></i>
-        </div>
-      </router-link>
+      <div class="mine" @click="goMine">
+        <i class="icon iconfont icon-people"></i>
+      </div>
     </div>
   </div>
 </template>
@@ -34,6 +32,14 @@ export default {
       }
       // console.log(this.isActive);
       this.$emit('isActive', this.isActive);
+    },
+    goMine () {
+      console.log(this.$store.state.loginState)
+      if(this.$store.state.loginState) {
+        this.$router.push({name: 'mine'});
+      }else {
+        this.$router.push({name: 'login'});
+      }
     }
   }
 }

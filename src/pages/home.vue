@@ -88,28 +88,25 @@ export default {
           delay: 5000,
         },
         loop : true,
-        // effect : 'fade',
       }
     }
   },
   computed: {
     username () {
-      // 我们很快就会看到 `params` 是什么
-      return this.$route.params.username
+      return this.$route.params.username;
     }
   },
   created () {
     let ajax = (method, url) => {
       return axios({
           method: method,
-          baseURL: '/api',
+          baseURL: '/movieapi',
           url: url
         })
     }
-    let getHomeList = new ajax('get', 'v4/api/billboard/home?__t=1531896508443')
+    let getHomeList = new ajax('get', '/v4/api/billboard/home?__t=1531896508443')
       .then((res) => {
         this.homeList = res.data.data.billboards;
-        // console.log(res.data.data.billboards);
       }).catch((err) => {
         console.log(err);
       })
@@ -127,7 +124,6 @@ export default {
       }).catch((err) => {
         console.log(err);
       })
-      // this.$store.dispatch('switch_conut')
   },
   components: {
     swiper,

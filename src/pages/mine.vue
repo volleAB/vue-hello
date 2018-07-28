@@ -9,7 +9,7 @@
         <swiper-slide class='slide'>
           <div class="user-movie">最喜欢</div>
         </swiper-slide>
-        <div class="swiper-scrollbar"   slot="scrollbar"></div>
+        <div class="swiper-scrollbar" slot="scrollbar"></div>
       </swiper>
     </div>
   </div>

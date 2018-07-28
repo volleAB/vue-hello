@@ -25,10 +25,7 @@ export default {
     setActive(data) {
       this.isActive = data;
       console.log(this.isActive);
-    },
-    // hideHeader() {
-
-    // }
+    }
   }
 }
 </script>

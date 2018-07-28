@@ -76,8 +76,7 @@ const Login = async(ctx) => {
       success: true,
       username,
       token, //登录成功要创建一个新的token,应该存入数据库
-      create_time: doc.create_time,
-      like_movie
+      create_time: doc.create_time
     };
   } else {
     console.log('密码错误!');

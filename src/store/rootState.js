@@ -4,7 +4,8 @@ const state = {
   movieName: '',
   cinemaName: '',
   token: window.sessionStorage.getItem('token'),
-  username: ''
+  username: '',
+  loginState: false
 }
 
 export default state;
