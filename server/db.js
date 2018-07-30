@@ -16,7 +16,6 @@ db.on('open', function(){
 const userSchema = mongoose.Schema({
     username: String,
     password: String,
-    // recheck: String,
     token: String,
     create_time: Date,
     favorite_movie: Array

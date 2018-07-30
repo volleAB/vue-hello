@@ -45,11 +45,11 @@ export default {
   },
   methods: {
     get: function () {
-      console.log(this.thisActive);
+      console.log(this.thisActive)
     },
     hideSide () {
-      this.thisActive = false;
-      console.log(this.thisActive);
+      this.thisActive = false
+      console.log(this.thisActive)
     }
   }
 }

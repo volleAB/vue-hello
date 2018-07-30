@@ -26,19 +26,19 @@ export default {
   methods: {
     showNav: function () {
       if(this.isActive) {
-        this.isActive = false;
+        this.isActive = false
       }else {
-        this.isActive = true;
+        this.isActive = true
       }
       // console.log(this.isActive);
-      this.$emit('isActive', this.isActive);
+      this.$emit('isActive', this.isActive)
     },
     goMine () {
       console.log(this.$store.state.loginState)
       if(this.$store.state.loginState) {
-        this.$router.push({name: 'mine'});
+        this.$router.push({name: 'mine'})
       }else {
-        this.$router.push({name: 'login'});
+        this.$router.push({name: 'login'})
       }
     }
   }

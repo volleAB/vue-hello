@@ -27,10 +27,18 @@ registerRouter.post('/register', UserController.Reg);
 //获取所有用户
 const userRouter = new Router();
 userRouter.get('/user', checkToken, UserController.GetAllUsers);
+
 //删除某个用户
 const delUserRouter = new Router();
 delUserRouter.post('/delUser', checkToken, UserController.DelUser);
 
+//查找当前用户信息
+const getUserRouter = new Router();
+getUserRouter.post('/oneUser', checkToken, UserController.GetOneUser);
+
+//添加我喜欢
+const addFavMoive = new Router();
+addFavMoive.post('/movie', checkToken, UserController.AddMoive);
 
 
 
@@ -39,7 +47,8 @@ router.use('/api',loginRouter.routes(),loginRouter.allowedMethods());
 router.use('/api',registerRouter.routes(),registerRouter.allowedMethods());
 router.use('/api',userRouter.routes(),userRouter.allowedMethods());
 router.use('/api',delUserRouter.routes(),delUserRouter.allowedMethods());
-
+router.use('/api',getUserRouter.routes(),getUserRouter.allowedMethods())
+router.use('/api',addFavMoive.routes(),addFavMoive.allowedMethods())
 
 
 

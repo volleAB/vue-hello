@@ -56,52 +56,55 @@ export default {
   },
   methods: {
     submitForm() {
-      let reg = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
+      let reg = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/
       //登录
       if (reg.test(this.loginForm.name)&&this.loginForm.pass!='') {
-        this.$store.state.loginState = true;
+        this.$store.state.loginState = true
         axios.userLogin(this.loginForm)
           .then(({ data }) => {
             //账号不存在
             if (data.info === false) {
-              return;
+              this.err = '账号不存在'
+              this.$store.dispatch('switch_mes', this.err)
+              return
             }
             if (data.success) {
               //拿到返回的token和username，并存到store
-              let token = data.token;
-              let username = data.username;
-              this.$store.dispatch('UserLogin', token);
-              this.$store.dispatch('UserName', username);
+              let token = data.token
+              let username = data.username
+              this.$store.state.username = data.username
+              this.$store.dispatch('UserLogin', token)
+              this.$store.dispatch('UserName', username)
               //跳到目标页
-              this.$router.push({name: 'mine'});
+              this.$router.push({name: 'mine'})
             }
           });
       } else {
-        console.log('error submit!!');
-        this.err = '手机号不正确或者密码为空';
-        return false;
+        console.log('error submit!!')
+        this.err = '手机号不正确或者密码为空'
+        return false
       }
     },
     goRegister () {
-      this.login = !this.login;
+      this.login = !this.login
     },
     registerIt () {
-      let reg = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
+      let reg = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/
 
       //注册
       if (reg.test(this.registerForm.name)&&this.registerForm.pass!=''&&this.registerForm.checkPass==this.registerForm.pass) {
         axios.userRegister(this.registerForm)
         .then(({ data }) => {
-          console.log(data);
+          console.log(data)
           if(data.success) {
-            console.log('注册成功');
+            console.log('注册成功')
           }
-          this.err = '注册成功';
+          this.err = '注册成功'
         })
       }else {
-        console.log('error submit!!');
-        this.err = '手机号不正确或者密码确认错误';
-        return false;
+        console.log('error submit!!')
+        this.err = '手机号不正确或者密码确认错误'
+        return
       }
     }
   }

@@ -26,7 +26,7 @@
 
 <script>
 require('../assets/scss/film.scss')
-import axios from 'axios'
+import axiosList from '../../api/list'
 
 export default {
   data() {
@@ -43,76 +43,45 @@ export default {
     // window.addEventListener('scroll', this.getMore);
   },
   created () {
-    document.body.scrollTop = 0;
-    let newType = this.$route.params.type;
+    document.body.scrollTop = 0
+    let newType = this.$route.params.type
     if(newType == "now-playing") {
       this.now = true;
     }else {
       this.soon = true
     }
-    // console.log(newType);
-    let url = '/v4/api/film/' + newType + '?__t=1532160378830&page=1&count=5'
-    let ajax = (method, url) => {
-      return axios({
-          method: method,
-          baseURL: '/api',
-          url: url,
-        })
-    }
-    let getFilmList = new ajax('get', url)
+    axiosList.getFilmList(newType)
       .then((res) => {
-        // console.log(res);
-        this.filmList = res.data.data.films;
+        this.filmList = res.data.data.films
       }).catch((err) => {
-        console.log(err);
+        console.log(err)
       })
   },
   methods: {
     changeTab (type) {
-      this.more = false;
-      // console.log(this.newType, type);
+      this.more = false
       if(this.newType != type) {
-        // this.$route.params.type = type;
-        this.$router.push({name: 'film', params: {type: type}});
-        // console.log(this.$route.params.type);
-        this.now = !this.now;
-        this.soon = !this.soon;
-        // console.log(this.newtype != type);
-        let url = '/v4/api/film/' + type + '?__t=1532160378830&page=1&count=5';
-        let ajax = (method, url) => {
-          return axios({
-              method: method,
-              baseURL: '/api',
-              url: url
-            })
-        }
-        let getFilmList = new ajax('get', url)
+        this.$router.push({name: 'film', params: {type: type}})
+        this.now = !this.now
+        this.soon = !this.soon
+        axiosList.getFilmList(type)
           .then((res) => {
-            // console.log(res);
-            this.filmList = res.data.data.films;
+            this.filmList = res.data.data.films
           }).catch((err) => {
-            console.log(err);
+            console.log(err)
           })
       }
     },
     getMore () {
-      this.more = true;
-      // console.log(this.$route.params.type);
-      let url = '/v4/api/film/' + this.$route.params.type + '?page=' + this.page + '&count=7';
-      let ajax = (method, url) => {
-        return axios({
-            method: method,
-            baseURL: '/api',
-            url: url
-          })
-      }
-      let getFilmList = new ajax('get', url)
+      this.more = true
+      let newType = this.$route.params.type
+      let page = this.page
+      axiosList.getFilmMoreList(newType, page)
         .then((res) => {
-          let moreFilm = res.data.data.films;
-          this.filmList = this.filmList.concat(moreFilm);
-          // console.log(this.filmList);
+          let moreFilm = res.data.data.films
+          this.filmList = this.filmList.concat(moreFilm)//向当前数组添加
         }).catch((err) => {
-          console.log(err);
+          console.log(err)
         })
     }
   }

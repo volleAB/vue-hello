@@ -45,7 +45,7 @@
 
 <script>
 require('../assets/scss/cinema.scss')
-import axios from 'axios'
+import axiosList from '../../api/list'
 
 export default {
   data () {
@@ -58,46 +58,38 @@ export default {
   },
   created () {
     let newId = this.$route.params.id;
-    let url = '/v4/api/cinema/' + newId + '?__t=1532335419519';
-    let ajax = (method, url) => {
-      return axios({
-        method,
-        baseURL: '/api',
-        url,
-      })
-    }
-    let getInfo = new ajax('get', url)
+    axiosList.getCinemaInfo(newId)
       .then((res) => {
-        // console.log(res);
-        this.cinemaInfo = res.data.data.cinema;
+        this.cinemaInfo = res.data.data.cinema
       }).catch((err) => {
-        console.log(err);
+        console.log(err)
       })
   },
   methods: {
     goGet (el) {
-      let reg = /^[0-9]{1,2}/;
-      this.mes = '';
-
+      let reg = /^[0-9]{1,2}/
+      this.mes = ''
       if(!this.col || !this.row) {
-        this.on = true;
+        this.on = true
         this.mes = "请填写行列！！！"
-        return;
+        return
       }else if(!reg.test(this.col) || !reg.test(this.row)) {
-        this.on = true;
+        this.on = true
         this.mes = "请填写两位数数字！！！"
-        return;
+        return
       }
       console.log(this.col, this.row);
-      this.on = false;
+      this.on = false
     },
     goPay () {
       if(!this.col || !this.row) {
         this.err = "请填写座次！！！"
-        return;
+        return
+      }else if(this.$store.state.movieName == '') {
+        return
       }
-      this.$store.state.cinemaName = this.cinemaInfo.address;
-      this.$router.push({name: 'pay', query: {col: this.col, row: this.row}});
+      this.$store.state.cinemaName = this.cinemaInfo.address
+      this.$router.push({name: 'pay', query: {col: this.col, row: this.row}})
     }
   }
 }

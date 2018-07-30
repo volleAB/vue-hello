@@ -5,7 +5,8 @@ const state = {
   cinemaName: '',
   token: window.sessionStorage.getItem('token'),
   username: '',
-  loginState: false
+  loginState: false,
+  messageGol: ''
 }
 
 export default state;

@@ -13,7 +13,7 @@
 
 <script>
 require('../assets/scss/cinema.scss')
-import axios from 'axios'
+import axiosList from '../../api/list'
 
 export default {
   data () {
@@ -22,26 +22,17 @@ export default {
     }
   },
   created () {
-    let url = 'v4/api/cinema?__t=1532321869522';
-    let ajax = (method, url) => {
-      return axios({
-        method: method,
-        baseURL: '/api',
-        url: url
-      })
-    }
-    let getCinemaList = new ajax('get', url)
+    axiosList.getCinemaList()
       .then((res) => {
         this.cinemaList = res.data.data.cinemas;
         this.cinemaList.splice(21, 90)
-        console.log(this.cinemaList);
       }).catch((err) => {
-        console.log(err);
+        console.log(err)
       })
   },
   methods: {
     goPay (id) {
-      this.$router.push({name: 'cinemaInfo', params: {id: id}});
+      this.$router.push({name: 'cinemaInfo', params: {id: id}})
     }
   }
 }

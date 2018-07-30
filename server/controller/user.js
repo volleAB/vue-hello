@@ -42,6 +42,28 @@ const delUser = function(id) {
     });
   });
 };
+//找到用户并添加电影
+const addMovie = (username, moviename) => {
+  return new Promise((resolve, reject) => {
+    let movie = [];
+    User.findOne({ username }, (err, doc) => {
+      if (err) {
+        reject(err);
+      }
+      movie = doc.favorite_movie;
+      movie.push(moviename);
+      User.update(
+        {username: username},
+        {favorite_movie: movie},
+        {multi: true}, (err, doc) => {
+        if(err) console.log(err);
+        console.log('更改成功：');
+        resolve(doc);
+      })
+      resolve(doc);
+    });
+  })
+};
 
 //登录
 const Login = async(ctx) => {
@@ -76,7 +98,8 @@ const Login = async(ctx) => {
       success: true,
       username,
       token, //登录成功要创建一个新的token,应该存入数据库
-      create_time: doc.create_time
+      create_time: doc.create_time,
+      favorite_movie: doc.favorite_movie
     };
   } else {
     console.log('密码错误!');
@@ -143,9 +166,36 @@ const DelUser = async(ctx) => {
   };
 };
 
+//查找当前用户的信息
+const GetOneUser = async(ctx) => {
+  let username = ctx.request.body.name;
+  let doc = await findUser(username);
+
+  ctx.status = 200;
+  ctx.body = {
+    success: '成功',
+    data: doc
+  };
+}
+
+//添加喜欢的电影
+const AddMoive = async(ctx) => {
+  let username = ctx.request.body.name;
+  let moviename = ctx.request.body.movie;
+  let doc = await addMovie(username, moviename);
+  ctx.status = 200;
+  ctx.body = {
+    success: '添加成功',
+    data: doc
+  };
+}
+
+
 module.exports = {
   Login,
   Reg,
   GetAllUsers,
-  DelUser
+  DelUser,
+  AddMoive,
+  GetOneUser
 };

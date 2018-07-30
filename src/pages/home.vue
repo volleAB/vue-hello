@@ -70,7 +70,8 @@
 <script>
 require('../assets/scss/home.scss');
 import 'swiper/dist/css/swiper.css'
-import axios from 'axios'
+// import axios from 'axios'
+import axiosList from '../../api/list'
 import {swiper,swiperSlide} from 'vue-awesome-swiper'
 import {mapActions} from 'vuex'
 
@@ -82,47 +83,38 @@ export default {
       hotList: [],
       soonList: [],
       swiperOption: {
+        loop: true,
         autoHeight: true,
         speed: 400,
         autoplay : {
           delay: 5000,
         },
-        loop : true,
       }
     }
   },
   computed: {
     username () {
-      return this.$route.params.username;
+      return this.$route.params.username
     }
   },
   created () {
-    let ajax = (method, url) => {
-      return axios({
-          method: method,
-          baseURL: '/movieapi',
-          url: url
-        })
-    }
-    let getHomeList = new ajax('get', '/v4/api/billboard/home?__t=1531896508443')
+    axiosList.getHomeList()
       .then((res) => {
-        this.homeList = res.data.data.billboards;
+        this.homeList = res.data.data.billboards
       }).catch((err) => {
-        console.log(err);
+        console.log(err)
       })
-    let getHotList = new ajax('get', '/v4/api/film/now-playing?__t=1532070953742&page=1&count=5')
+    axiosList.getHotList()
       .then((res) => {
-        this.hotList = res.data.data.films;
-        console.log(res.data.data.films);
+        this.hotList = res.data.data.films
       }).catch((err) => {
-        console.log(err);
+        console.log(err)
       })
-    let getSoonList = new ajax('get', '/v4/api/film/coming-soon?__t=1532073609355&page=1&count=3')
+    axiosList.getSoonList()
       .then((res) => {
-        this.soonList = res.data.data.films;
-        console.log(res.data.data.films);
+        this.soonList = res.data.data.films
       }).catch((err) => {
-        console.log(err);
+        console.log(err)
       })
   },
   components: {

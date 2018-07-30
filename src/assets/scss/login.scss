@@ -53,6 +53,7 @@ body {
 
 
 #mine {
+  position: relative;
   width: 100%;
   height: 400px;
   margin: 58px auto;
@@ -66,21 +67,19 @@ body {
     .user-show {
       max-width: 600px;
       width: 100%;
-      height: 240px;
+      height: 340px;
       margin-top: 20px;
       .user-info {
         width: 100%;
-        height: 240px;
+        height: 340px;
         padding: 20px;
         border-radius: 10px;
-        background: #ff98003d;
       }
       .user-movie {
         width: 100%;
-        height: 240px;
+        height: 340px;
         padding: 20px;
         border-radius: 10px;
-        background: #03a9f447;
       }
     }
   }

@@ -48,12 +48,20 @@ export default {
   userLogin(data) {
     return axios.post('/api/login', data);
   },
-  //获取用户
+  //获取所有用户
   getUser() {
     return instance.get('/api/user');
+  },
+  //获取某个用户
+  getOneUser(data) {
+    return instance.post('/api/oneUser', data);
   },
   //删除用户
   delUser(data) {
     return instance.post('/api/delUser', data);
+  },
+  //添加我喜欢
+  getFavMoive(data) {
+    return instance.post('/api/movie', data)
   }
 }

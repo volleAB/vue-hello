@@ -44,10 +44,10 @@ export default {
     }
   },
   created () {
-    this.col = this.$route.query.col;
-    this.row = this.$route.query.row;
-    this.movie = this.$store.state.movieName;
-    this.cinema = this.$store.state.cinemaName;
+    this.col = this.$route.query.col
+    this.row = this.$route.query.row
+    this.movie = this.$store.state.movieName
+    this.cinema = this.$store.state.cinemaName
     console.log(this.cinema)
   },
   methods: {

@@ -6,6 +6,9 @@ const mutations = {
     state.count++;
     console.log(state.count);
   },
+  switch_mes(state, data) {
+    state.messageGol = data;
+  },
   LOGIN: (state, data) => {
     //更改token的值
     state.token = data;

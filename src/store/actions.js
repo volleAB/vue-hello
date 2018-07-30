@@ -1,9 +1,12 @@
 const actions = {
-  switch_show(context) {
-    context.commit('switch_show');
+  switch_show({ commit }) {
+    commit('switch_show');
   },
-  switch_conut(context) {
-    context.commit('switch_conut');
+  switch_conut({ commit }) {
+    commit('switch_conut');
+  },
+  switch_mes({ commit }, data) {
+    commit('switch_mes', data);
   },
   UserLogin({ commit }, data){
     commit('LOGIN', data);
