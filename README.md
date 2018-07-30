@@ -53,4 +53,4 @@ Some part of it is to learn from them
 
 [vue-login](https://github.com/stzhongjie/vue-login)
 
-![image](https://github.com/volleAB/vue-hello/lalala.gif)
+![image](https://github.com/volleAB/vue-hello/blob/master/lalala.gif)
