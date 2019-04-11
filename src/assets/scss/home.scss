@@ -1,115 +1,160 @@
 @import 'common.scss';
 
-body {
-  background-color: #e1e1e1;
-}
-
 #home {
   width: 100%;
-  margin-top: 58px;
   color: #000000;
   .banner {
     position: relative;
     width: 100%;
     background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
     background-blend-mode: multiply,multiply;
-    .banner-swiper {
-      top: 20px;
+    .iconfont {
+      font-size: 8px;
+    }
+    @at-root {
+      .location {
+        position: absolute;
+        top: 16px;
+        left: 10px;
+        width: 58px;
+        height: 30px;
+        border: none;
+        border-radius: 20px;
+        color: #fff;
+        font-size: .8rem;
+        background: rgba(0,0,0,0.40);
+        line-height: 2.4;
+        z-index: 20;
+      }
+      .el-carousel__indicators {
+        transform: translateX(60%);
+      }
+      .el-carousel__button {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
       img {
-        max-width: 800px;
         width: 100%;
       }
     }
   }
   .container {
-    max-width: 560px;
-    width: 80%;
     margin: 0 auto;
-    .home-view {
-      margin-top: 40px;
+    @at-root {
+      span {
+        display: inline-block;
+      }
+      .select-type {
+        display: flex;
+      }
+      .select-item {
+        position: relative;
+        box-sizing: border-box;
+        width: 50%;
+        cursor: pointer;
+        span {
+          padding: 14px 0;
+        }
+        .selected {
+          color: #ff5f16;
+          border-bottom: 2px solid #ff5f16;
+        }
+      }
+    }
+  }
+  .home-view {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 6px;
+    @at-root {
+      .hot {
+        margin: 0 16px;
+      }
       a {
         color: #000000;
       }
+      .moive {
+        padding: 6px 0;
+      }
       .movie-item {
-        box-shadow: 0.5px 0.5px 1px #a8a8a8;
-        transition: all .3s ease-in-out;
-        cursor: pointer;
-        &:hover {
-          box-shadow: 6px 5px 18px 2px #5c5c5c
-        }
-        .movie-item-img {
-          background: #ffffff;
-          img {
-            width: 100%;
-          }
-        }
-        .movie-item-info {
-          width: 100%;
-          max-height: 60px;
-          height: 50px;
-          margin-bottom: 30px;
-          border-radius: 2px;
-          background: #ffffff;
-          .movie-item-name {
-            width: 80%;
-            padding: 4px 0 0 10px;
-            text-align: left;
-            font-size: 16px;
-            span {
-              font-size: 12px;
-              color: #9a9a9a;
-            }
-          }
-          .movie-item-grade {
-            padding: 10px;
-            font-size: 20px;
-            color: #f78360;
-          }
-        }
-      }
-    }
-    .more {
-      position: relative;
-      max-width: 280px;
-      min-width: 160px;
-      height: 30px;
-      border: 1px solid #aaa;
-      border-radius: 15px;
-      margin: 10px auto 30px;
-      text-align: center;
-      line-height: 30px;
-      font-size: 12px;
-      color: #616161;
-      cursor: pointer;
-      transition: all .3s ease-in-out;
-      &:hover {
-        border-color: #FF9800;
-        box-shadow: 3px 2px 10px 1px #9b9b9b;
-        background: #FF9800;
-        color: #795548;
-      }
-    }
-    .soon {
-      margin: 40px 0;
-      .soon-line {
+        display: flex;
         position: relative;
         width: 100%;
-        margin-bottom: 30px;
-        border-top: 1px solid #a8a8a8;
-        &:before {
-          position: absolute;
-          top: -10px;
-          left: 50%;
-          content: '即将上映';
-          width: 100px;
-          height: 20px;
-          margin-left: -50px;
-          border-radius: 4px;
-          background: #a7a7a7;
-          color: #eeeeee;
+        cursor: pointer;
+      }
+      .movie-item-img {
+        width: 66px;
+        height: 94px;
+        background: #ffffff;
+        img {
+          width: 100%;
         }
       }
+      .movie-item-info-col {
+        padding: 2px 10px;
+        font-size: 13px;
+        text-align: left;
+        color: #797d82;
+      }
+      .name {
+        font-size: 15px;
+        color: #000;
+      }
+      .item {
+        width: 20px;
+        height: 16px;
+        padding: 0 2px;
+        border-radius: 4px;
+        line-height: 1.4;
+        background-color: #d2d6dc;
+        color: #fff;
+      }
+      .movie-item-actors {
+        display: inline-block;
+        width: 168px;
+        vertical-align: bottom;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .movie-item-actor {
+        padding-left: 2px;
+      }
+      .movie-buy {
+        position: absolute;
+        top: 30px;
+        right: 1px;
+        width: 54px;
+        height: 26px;
+        padding: 2px 6px;
+        border: 1px solid #ff5f16;
+        border-radius: 2px;
+        font-size: 13px;
+        color: #ff5f16;
+      }
     }
+    // .soon {
+    //   margin: 40px 0;
+    //   .soon-line {
+    //     position: relative;
+    //     width: 100%;
+    //     margin-bottom: 30px;
+    //     border-top: 1px solid #a8a8a8;
+    //     &:before {
+    //       position: absolute;
+    //       top: -10px;
+    //       left: 50%;
+    //       content: '即将上映';
+    //       width: 100px;
+    //       height: 20px;
+    //       margin-left: -50px;
+    //       border-radius: 4px;
+    //       background: #a7a7a7;
+    //       color: #eeeeee;
+    //     }
+    //   }
+    // }
   }
 }
 

@@ -14,18 +14,18 @@ export default {
         message: '',
         time: 3000,
         isShow: false,
-        isErr: true
+        isErr: false
       }
     },
     mounted () {
-      // this.close()
+      this.close()
     },
     methods: {
       close () {
         let that = this
-        if(that.message!=that.$store.state.messageGol) {
-          that.message = that.$store.state.messageGol
+        if(that.message != that.$store.state.messageGol) {
           this.isShow = true
+          that.message = that.$store.state.messageGol
         }
         window.setTimeout(function() {
           that.isShow = false

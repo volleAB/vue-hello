@@ -9,6 +9,7 @@
             <ul>
               <li>用户名：{{userName}}</li>
               <li>创建日期：{{creatTime}}</li>
+              <li>喜爱：</li>
             </ul>
           </div>
         </swiper-slide>
@@ -31,7 +32,7 @@ require('../assets/icon/iconfont.css')
 require('../assets/scss/login.scss')
 import 'swiper/dist/css/swiper.css'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
-import axios from '../../api/axios'
+import axios from '../api/axios'
 
 export default {
   data () {

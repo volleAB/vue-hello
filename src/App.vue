@@ -1,15 +1,11 @@
 <template>
   <div id="app">
-    <comheader @isActive="setActive"></comheader>
     <commes></commes>
     <router-view />
-    <comsidebar :Active="isActive" ref="aName"></comsidebar>
   </div>
 </template>
 
 <script>
-import comheader from './components/header'
-import comsidebar from './components/sidebar'
 import commes from './components/message'
 
 export default {
@@ -20,8 +16,6 @@ export default {
     }
   },
   components: {
-    comheader,
-    comsidebar,
     commes
   },
   methods: {

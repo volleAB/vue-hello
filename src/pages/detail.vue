@@ -21,8 +21,8 @@
 
 <script>
 require('../assets/scss/detail.scss')
-import axios from '../../api/axios'
-import axiosList from '../../api/list'
+import axios from '../api/axios'
+import axiosList from '../api/list'
 import {mapGetters, mapActions} from 'vuex'
 
 export default {
@@ -42,12 +42,12 @@ export default {
 	},
   created () {
     let newId = this.$route.params.id
-    axiosList.getFilmDetail(newId)
-      .then((res) => {
-        this.filmDetail = res.data.data.film
-      }).catch((err) => {
-        console.log(err)
-      })
+    // axiosList.getFilmDetail(newId)
+    //   .then((res) => {
+    //     this.filmDetail = res.data.data.film
+    //   }).catch((err) => {
+    //     console.log(err)
+    //   })
   },
   computed: {
     // mapGetters(['gettersMsg']),
@@ -59,6 +59,7 @@ export default {
         this.$store.state.movieName = this.filmDetail.name
       }else {
         console.log('请登录')
+        this.$store.dispatch('switch_mes', '请登录')
       }
     },
     addMovie () {
@@ -75,6 +76,8 @@ export default {
           })
       }else {
         console.log('请登录！')
+        this.$store.state.messageGol = '请登录'
+        console.log(this.$store.state.messageGol)
       }
     }
   }

@@ -11,14 +11,14 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/movieapi': {
-        target: 'http://m.maizuo.com',// 请换成你的地址
+        target: 'https://m.maizuo.com',// 请换成你的地址
         changeOrigin: true,
         pathRewrite: {
           '^/movieapi': ''
         }
       },
       '/api': {
-        target: 'http://localhost:8888',
+        target: 'http://59.68.29.67:8001',
         changeOrigin: true,
       }
     },
@@ -61,7 +61,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
 
     /**
      * Source Maps

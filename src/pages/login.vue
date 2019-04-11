@@ -35,7 +35,7 @@
 
 <script>
 require('../assets/scss/login.scss')
-import axios from '../../api/axios.js'
+import axios from '../api/axios.js'
 
 export default {
   data () {
@@ -58,7 +58,7 @@ export default {
     submitForm() {
       let reg = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/
       //登录
-      if (reg.test(this.loginForm.name)&&this.loginForm.pass!='') {
+      if (reg.test(this.loginForm.name) && this.loginForm.pass!='') {
         this.$store.state.loginState = true
         axios.userLogin(this.loginForm)
           .then(({ data }) => {

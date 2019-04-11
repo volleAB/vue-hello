@@ -26,7 +26,7 @@
 
 <script>
 require('../assets/scss/film.scss')
-import axiosList from '../../api/list'
+import axiosList from '../api/list'
 
 export default {
   data() {

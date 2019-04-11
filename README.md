@@ -2,7 +2,9 @@
 
 > A Vue.js project
 
-##Start Project
+因为卖座网升级了，它的接口变了，比较菜，没能弄懂他这个接口是咋弄的，现在的话就用一些静态数据来作为展示的内容，现在正在升级中:hammer_and_wrench::hammer_and_wrench::hammer_and_wrench:。
+
+## Start Project
 
 ``` bash
 
@@ -48,9 +50,15 @@ npm test
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
-##Thanks
+## Version 1.0
+
+![image](https://github.com/volleAB/vue-hello/blob/master/lalala.gif)
+
+## Version 2.0
+
+## Thanks
+
 Some part of it is to learn from them
 
 [vue-login](https://github.com/stzhongjie/vue-login)
-
-![image](https://github.com/volleAB/vue-hello/blob/master/lalala.gif)
+[vue-demo-maizuo](https://github.com/ChuckCZC/vue-demo-maizuo)
