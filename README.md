@@ -14,12 +14,12 @@ node server.js
 # serve with hot reload at localhost:8080
 npm run dev
 
-#server
+# server
 
 服务是用koa2+MongoDB搭建的，使用Mongoose连接数据库，实现数据的增删改查。
 有用户注册登陆的功能，添加喜欢的电影，添加标签……
 
-#other
+# other
 使用Vue2搭建，没有用其他的UI库，本来想用Element的，但是忘记了0.0
 整个搭建用的是Vue-cli,粗略的使用了Vuex、Vue Router、scss、axios
 
@@ -50,15 +50,23 @@ npm test
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
+<<<<<<< HEAD
 ## Version 1.0
 
 ![image](https://github.com/volleAB/vue-hello/blob/master/lalala.gif)
 
 ## Version 2.0
 
+=======
+>>>>>>> 3ba5e221d5c853e59726f0b2b7a901f6ffe72c72
 ## Thanks
 
 Some part of it is to learn from them
 
 [vue-login](https://github.com/stzhongjie/vue-login)
 [vue-demo-maizuo](https://github.com/ChuckCZC/vue-demo-maizuo)
+<<<<<<< HEAD
+=======
+
+![image](https://github.com/volleAB/vue-hello/blob/master/lalala.gif)
+>>>>>>> 3ba5e221d5c853e59726f0b2b7a901f6ffe72c72
