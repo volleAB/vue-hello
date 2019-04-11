@@ -50,23 +50,17 @@ npm test
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
-<<<<<<< HEAD
 ## Version 1.0
 
 ![image](https://github.com/volleAB/vue-hello/blob/master/lalala.gif)
 
 ## Version 2.0
 
-=======
->>>>>>> 3ba5e221d5c853e59726f0b2b7a901f6ffe72c72
 ## Thanks
 
 Some part of it is to learn from them
 
 [vue-login](https://github.com/stzhongjie/vue-login)
 [vue-demo-maizuo](https://github.com/ChuckCZC/vue-demo-maizuo)
-<<<<<<< HEAD
-=======
 
 ![image](https://github.com/volleAB/vue-hello/blob/master/lalala.gif)
->>>>>>> 3ba5e221d5c853e59726f0b2b7a901f6ffe72c72
