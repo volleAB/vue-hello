@@ -42,24 +42,30 @@
   .container {
     margin: 0 auto;
     @at-root {
-      span {
-        display: inline-block;
-      }
       .select-type {
-        display: flex;
+        position: relative;
+        width: 100%;
       }
       .select-item {
-        position: relative;
-        box-sizing: border-box;
-        width: 50%;
+        display: inline-block;
+        width: 40%;
+        padding: 14px 4px;
         cursor: pointer;
-        span {
-          padding: 14px 0;
-        }
-        .selected {
-          color: #ff5f16;
-          border-bottom: 2px solid #ff5f16;
-        }
+      }
+      .selected {
+        color: #ff5f16;
+      }
+      .tab-bottom {
+        position: absolute;
+        bottom: 2px;
+        left: 19.5%;
+        width: 20%;
+        height: 2px;
+        background-color: #ff5f16;
+        transition: left .4s ease;
+      }
+      .tab_bottom_move {
+        left: 60.5%;
       }
     }
   }
@@ -68,7 +74,21 @@
     margin: 0 auto;
     margin-top: 6px;
     @at-root {
+      .loading {
+        img {
+          width: 28px;
+          height: 28px;
+          vertical-align: middle;
+        }
+        span {
+          font-size: 12px;
+          color: #797d82;
+        }
+      }
       .hot {
+        margin: 0 16px;
+      }
+      .soon {
         margin: 0 16px;
       }
       a {

@@ -6,7 +6,9 @@ const state = {
   token: window.sessionStorage.getItem('token'),
   username: '',
   loginState: false,
-  messageGol: ''
+  messageGol: '',
+  bannerList: [],
+  homeList: []
 }
 
 export default state;

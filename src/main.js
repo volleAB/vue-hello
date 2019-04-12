@@ -4,7 +4,7 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 import store from './store/index';
-import { Button, Select, Carousel, CarouselItem, } from 'element-ui';
+import { Button, Select, Carousel, CarouselItem, col, row, Message } from 'element-ui';
 
 Vue.config.productionTip = false;
 
@@ -12,6 +12,9 @@ Vue.use(Button);
 Vue.use(Select);
 Vue.use(Carousel);
 Vue.use(CarouselItem);
+Vue.use(col);
+Vue.use(row);
+Vue.prototype.$message = Message;
 
 /* eslint-disable no-new */
 new Vue({

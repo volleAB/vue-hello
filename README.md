@@ -2,7 +2,12 @@
 
 > A Vue.js project
 
-因为卖座网升级了，它的接口变了，比较菜，没能弄懂他这个接口是咋弄的，现在的话就用一些静态数据来作为展示的内容，现在正在升级中:hammer_and_wrench::hammer_and_wrench::hammer_and_wrench:。
+因为卖座网升级了，它的接口变了，比较菜，没能弄懂他这个接口是咋弄的，现在的话就用一些静态数据来作为展示的内容
+
+**Soory**
+
+尽快完成升级
+:hammer_and_wrench::hammer_and_wrench::hammer_and_wrench:。
 
 ## Start Project
 
@@ -52,9 +57,11 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 ## Version 1.0
 
-![image](https://github.com/volleAB/vue-hello/blob/master/lalala.gif)
+![image](./lalala.gif)
 
 ## Version 2.0
+
+![image](./v_2.png)
 
 ## Thanks
 
@@ -62,5 +69,3 @@ Some part of it is to learn from them
 
 [vue-login](https://github.com/stzhongjie/vue-login)
 [vue-demo-maizuo](https://github.com/ChuckCZC/vue-demo-maizuo)
-
-![image](https://github.com/volleAB/vue-hello/blob/master/lalala.gif)

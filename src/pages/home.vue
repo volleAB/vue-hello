@@ -1,10 +1,12 @@
 <template>
   <div id="home">
     <div class="banner">
-      <div class="location">
-        <span>武汉</span>
-        <i class="iconfont icon-bottom"></i>
-      </div>
+      <router-link :to="{name: 'city'}">
+        <div class="location">
+            <span>武汉</span>
+            <i class="iconfont icon-bottom"></i>
+        </div>
+      </router-link>
       <el-carousel class="banner-swiper" trigger="click" height="54vw" arrow="never">
         <el-carousel-item  class='slide' v-for="item in bannerList" :key="item.bannerId">
           <a target='_blank' :href="item.actionData">
@@ -15,18 +17,21 @@
     </div>
     <div class="container">
       <div class="select-type">
-        <div class="select-item">
-          <span :class="{selected : isHot}" @click="selected()">正在热映</span>
-        </div>
-        <div class="select-item">
-          <span :class="{selected : !isHot}" @click="selected()">即将上映</span>
-        </div>
+        <ul>
+          <li class="select-item" :class="{selected : isHot}" @click="selected()">正在热映</li>
+          <li class="select-item" :class="{selected : !isHot}" @click="selected()">即将上映</li>
+          <div class="tab-bottom" :class="{tab_bottom_move : !isHot}"></div>
+        </ul>
       </div>
       <section class="home-view">
-        <div class="hot">
+        <div class="loading" v-show="soonList.length < 1">
+          <img src="../assets/images/loading.gif" alt="loading">
+          <span>加载中...</span>
+        </div>
+        <div class="hot" v-show="isHot">
           <ul>
             <li class="moive" v-for="(item, index) in hotList" :key="index">
-              <router-link :to="{name: 'detail', params:{ id: item.filmId }}">
+              <router-link :to="{name: 'film', params:{ id: item.filmId }}">
                 <div class="movie-item">
                   <div class="movie-item-img">
                     <img :src="item.poster" :alt="item.name">
@@ -82,7 +87,7 @@
                         </span>
                       </div>
                     </div>
-                    <div class="movie-order">
+                    <div class="movie-buy">
                       预约
                     </div>
                   </div>
@@ -110,7 +115,10 @@ export default {
       bannerList: [],
       hotList: [],
       soonList: [],
-      isHot: true
+      isHot: true,
+      clientHeight: Number,
+      update: true,
+      getHotList: false
     }
   },
   components: {
@@ -123,20 +131,40 @@ export default {
     }
   },
   created () {
+
+  },
+  mounted() {
     axiosList.getBannerList()
       .then((res) => {
         this.bannerList = res.data;
-        console.log(this.bannerList);
       }).catch((err) => {
-        console.log(err)
+        console.log(err);
       })
     axiosList.getHotList('1')
       .then((res) => {
+        this.getHotList = true;
+        this.$store.state.hotList = this.hotList;
         this.hotList = res.data.films;
-        console.log(this.hotList);
       }).catch((err) => {
         console.log(err)
       })
+    this.openMessage();
+    this.clientHeight = document.documentElement.clientHeight;
+    console.log('clientHeight' + this.clientHeight);
+    this.$nextTick(() => {
+      window.addEventListener('scroll', (e) => {
+        if(document.documentElement.scrollTop > this.clientHeight - 380 && this.update) {
+          axiosList.getHotList('2')
+            .then((res) => {
+              this.hotList.push(...res.data.films);
+              console.log(this.hotList);
+            }).catch((err) => {
+              console.log(err);
+            })
+          this.update = false;
+        }
+      })
+    })
   },
   methods: {
     goBack () {
@@ -146,6 +174,22 @@ export default {
     },
     selected() {
       this.isHot = !this.isHot;
+      if(!this.isHot) {
+        if(this.soonList < 1) {
+         axiosList.getSoonList()
+          .then((res) => {
+            this.soonList = res.data.films;
+          })
+        }
+      }
+    },
+    openMessage() {
+      const h = this.$createElement;
+      this.$message({
+          message: h('p', null, [
+            h('span', { style: 'color: teal' }, '只用于学习(￣▽￣)／')
+          ])
+        });
     }
   }
 }

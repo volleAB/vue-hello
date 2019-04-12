@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <commes></commes>
-    <router-view />
+    <transition name="fade">
+      <router-view />
+    </transition>
   </div>
 </template>
 
@@ -34,5 +36,14 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+.fade-enter-active, .fade-leave-active {
+  top: 0;
+  transition: all .6s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  position: absolute;
+  top: 160px;
+  opacity: 0;
 }
 </style>

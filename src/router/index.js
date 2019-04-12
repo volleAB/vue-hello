@@ -8,6 +8,7 @@ import Cinema from '../pages/cinema'
 import CinemaInfo from '../pages/cinemaInfo'
 import Pay from '../pages/pay'
 import Login from '../pages/login'
+import City from '../pages/city'
 // import HelloWorld from '@/components/HelloWorld'
 
 Vue.use(Router)
@@ -42,7 +43,7 @@ const routes = [
     }
   },
   {
-    path: '/film/:type',
+    path: '/film/:id',
     name: 'film',
     component: Film,
     meta: {
@@ -97,6 +98,14 @@ const routes = [
       title: '登录'
     }
   },
+  {
+    path: '/city',
+    name: 'city',
+    component: City,
+    meta: {
+      title: '城市'
+    }
+  }
 ]
 
 const router = new Router({

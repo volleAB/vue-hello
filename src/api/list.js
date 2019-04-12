@@ -7,6 +7,7 @@ import hotList1 from '../data/hotList1'
 import hotList2 from '../data/hotList2'
 import hotList3 from '../data/hotList3'
 import soonList from '../data/soonList'
+import cityList from '../data/city'
 
 var instance = axios.create(config.movieConfig)
 
@@ -32,6 +33,11 @@ export default {
   getSoonList() {
     return new Promise((resolve, reject) => {
       resolve(soonList);
+    })
+  },
+  getCityList() {
+    return new Promise((resolve, rejevt) =>{
+      resolve(cityList);
     })
   },
   getCinemaList(data) {
