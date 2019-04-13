@@ -4,7 +4,7 @@
 
 因为卖座网升级了，它的接口变了，比较菜，没能弄懂他这个接口是咋弄的，现在的话就用一些静态数据来作为展示的内容
 
-**Soory**
+**Sorry**
 
 尽快完成升级
 :hammer_and_wrench::hammer_and_wrench::hammer_and_wrench:。

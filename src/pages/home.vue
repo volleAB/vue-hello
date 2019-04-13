@@ -3,8 +3,8 @@
     <div class="banner">
       <router-link :to="{name: 'city'}">
         <div class="location">
-            <span>武汉</span>
-            <i class="iconfont icon-bottom"></i>
+            <span>{{$store.state.city}}</span>
+            <i class="iconfont icon-down"></i>
         </div>
       </router-link>
       <el-carousel class="banner-swiper" trigger="click" height="54vw" arrow="never">
@@ -24,7 +24,8 @@
         </ul>
       </div>
       <section class="home-view">
-        <div class="loading" v-show="soonList.length < 1">
+        <!-- loading有点错误 -->
+        <div class="loading" v-show="hotList.length < 1">
           <img src="../assets/images/loading.gif" alt="loading">
           <span>加载中...</span>
         </div>
@@ -143,14 +144,14 @@ export default {
     axiosList.getHotList('1')
       .then((res) => {
         this.getHotList = true;
-        this.$store.state.hotList = this.hotList;
         this.hotList = res.data.films;
+        this.$store.state.hotList = this.hotList;
       }).catch((err) => {
         console.log(err)
       })
     this.openMessage();
     this.clientHeight = document.documentElement.clientHeight;
-    console.log('clientHeight' + this.clientHeight);
+    // console.log('clientHeight' + this.clientHeight);
     this.$nextTick(() => {
       window.addEventListener('scroll', (e) => {
         if(document.documentElement.scrollTop > this.clientHeight - 380 && this.update) {

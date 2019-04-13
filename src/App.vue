@@ -4,11 +4,13 @@
     <transition name="fade">
       <router-view />
     </transition>
+    <navBar></navBar>
   </div>
 </template>
 
 <script>
 import commes from './components/message'
+import navBar from './components/navBar'
 
 export default {
   name: 'App',
@@ -18,7 +20,8 @@ export default {
     }
   },
   components: {
-    commes
+    commes,
+    navBar
   },
   methods: {
     setActive(data) {
