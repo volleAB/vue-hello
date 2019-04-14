@@ -48,7 +48,17 @@ const routes = [
     component: Film,
     meta: {
       title: '电影'
-    }
+    },
+    children: [
+      {
+        path: '/cinemas',
+        name: 'filmConema',
+        component: Cinema,
+        meta: {
+          title: '影院'
+        }
+      }
+    ]
   },
   {
     path: '/detail/:id',
@@ -59,8 +69,8 @@ const routes = [
     }
   },
   {
-    path: '/cinema',
-    name: 'cinema',
+    path: '/cinemas',
+    name: 'cinemas',
     component: Cinema,
     meta: {
       title: '影院'

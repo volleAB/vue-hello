@@ -1,4 +1,5 @@
 <template>
+  <!-- <div class="nav-bar" @click="showNav"> -->
   <div class="nav-bar">
     <el-row :gutter="20">
       <el-col :span="8">
@@ -10,7 +11,7 @@
         </router-link>
       </el-col>
       <el-col :span="8">
-        <router-link :to="{name: 'cinema'}">
+        <router-link :to="{name: 'cinemas'}">
           <div class="grid-content nav-bar-item" @click="whichNav = 'cinema'">
             <img :src="whichNav == 'cinema' ? require('../assets/images/nav_cinema_active.png') : require('../assets/images/nav_cinema.png')" alt="">
             <span :class="{'nav-active' : whichNav == 'cinema'}">影院</span>
@@ -34,7 +35,13 @@ export default {
   name: 'navBar',
   data() {
     return {
-      whichNav: 'film'
+      whichNav: 'film',
+      isActive: true
+    }
+  },
+  methods: {
+    showNav: function () {
+      this.$emit('isActive', this.isActive);
     }
   }
 }

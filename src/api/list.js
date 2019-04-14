@@ -40,18 +40,15 @@ export default {
       resolve(cityList);
     })
   },
-  getCinemaList(data) {
-    return instance.get('/v4/api/cinema?__t=1532321869522', data)
-  },
-  getCinemaInfo(newId) {
-    return instance.get('/v4/api/cinema/' + newId + '?__t=1532335419519')
-  },
-  getFilmDetail(newId) {
-    return instance.get('/v4/api/film/' + newId + '?__t=1532153429284')
-  },
-  getFilmList(newType) {
-    return instance.get('/v4/api/film/' + newType + '?__t=1532160378830&page=1&count=5')
-  },
+  // getCinemaList(data) {
+  //   return instance.get('/v4/api/cinema?__t=1532321869522', data)
+  // },
+  // getCinemaInfo(newId) {
+  //   return instance.get('/v4/api/cinema/' + newId + '?__t=1532335419519')
+  // },
+  // getFilmDetail(newId) {
+  //   return instance.get('/v4/api/film/' + newId + '?__t=1532153429284')
+  // },
   getFilmMoreList(newType,page) {
     return instance.get('/v4/api/film/' + newType + '?page=' + page + '&count=7')
   }

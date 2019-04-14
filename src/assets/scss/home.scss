@@ -116,6 +116,9 @@
         font-size: 13px;
         text-align: left;
         color: #797d82;
+        .lable {
+          padding-left: 0;
+        }
       }
       .name {
         font-size: 15px;
@@ -129,6 +132,7 @@
         line-height: 1.4;
         background-color: #d2d6dc;
         color: #fff;
+        font-size: 13px;
       }
       .movie-item-actors {
         display: inline-block;

@@ -70,7 +70,7 @@
         <div class="soon" v-show="!isHot">
           <ul>
             <li class="moive" v-for="(item, index) in soonList" :key="index">
-              <router-link :to="{name: 'detail', params:{ id: item.filmId }}">
+              <router-link :to="{name: 'film', params:{ id: item.filmId }}">
                 <div class="movie-item">
                   <div class="movie-item-img">
                     <img :src="item.poster" :alt="item.name">
@@ -104,10 +104,10 @@
 
 <script>
 require('../assets/scss/home.scss');
-import 'swiper/dist/css/swiper.css'
-import axiosList from '../api/list'
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
-import { mapActions } from 'vuex'
+import 'swiper/dist/css/swiper.css';
+import axiosList from '../api/list';
+import { swiper, swiperSlide } from 'vue-awesome-swiper';
+import { mapActions } from 'vuex';
 
 export default {
   name: "home",

@@ -8,7 +8,8 @@ const state = {
   messageGol: '',
   bannerList: [], //头部滚动
   hotList: [],  //热映电影
-  city: '武汉'  //当前城市
+  city: '武汉',  //当前城市
+  canNavBar: true
 }
 
 export default state;

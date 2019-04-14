@@ -4,7 +4,8 @@
     <transition name="fade">
       <router-view />
     </transition>
-    <navBar></navBar>
+    <!-- <navBar :class="{hidden : isHidden}" @isActive="test"></navBar> -->
+    <navBar :class="{navBarhidden : isHidden}"></navBar>
   </div>
 </template>
 
@@ -16,17 +17,29 @@ export default {
   name: 'App',
   data() {
     return {
-      isActive: false
+      isHidden: false
     }
   },
   components: {
     commes,
     navBar
   },
+  watch:{
+    $route(to, from){
+      if(to.path.includes('film')) {
+        this.isHidden = true;
+      } else {
+        this.isHidden = false;
+      }
+    }
+  },
+  mounted() {
+
+  },
   methods: {
-    setActive(data) {
-      this.isActive = data;
-      console.log(this.isActive);
+    test(data) {
+      this.isHidden = data;
+      console.log(this.isHidden);
     }
   }
 }
@@ -48,5 +61,8 @@ export default {
   position: absolute;
   top: 160px;
   opacity: 0;
+}
+.navBarhidden {
+  visibility: hidden;
 }
 </style>

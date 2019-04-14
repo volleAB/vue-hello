@@ -46,3 +46,9 @@ a {
 span {
   display: inline-block;
 }
+
+.col {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+}

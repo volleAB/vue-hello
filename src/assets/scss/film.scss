@@ -4,91 +4,174 @@ body {
 
 #film {
   width: 100%;
-  margin: 58px 0;
   .container {
-    width: 90%;
     margin: 0 auto;
-    .film-type {
-      width: 100%;
-      border-bottom: 1px solid #fe6e00;
-      cursor: pointer;
-      .film-now,
-      .film-soon {
-        width: 50%;
-        padding: 10px 20px;
-        color: #6a6a6a;
-      }
-    }
-    .film {
-      transition: all 0.2s cubic-bezier(0.55, 0, 0.1, 1);
-      .film-item {
-        height: 200px;
-        border-bottom: 1px dashed #c9c9c9;
-        cursor: pointer;
-        img {
-          float: left;
-          width: 100px;
-          height: 140px;
-          margin-top: 20px;
-        }
-        .film-info {
-          position: relative;
-          width: 100%;
-          padding: 10px 0 20px 120px;
-          text-align: left;
-          color: #8e8e8e;
-          h3 {
-            display: inline-block;
-            color: #000000;
-          }
-          span {
-            line-height: 3;
-            color: #8aa2bf;
-          }
-          .grade {
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            color: #fc7103;
-            &:after {
-              content: '>';
-              margin-left: 4px;
-              font-size: 20px;
-              color: #a5a5a5;
-            }
-          }
-        }
-      }
-      .loadMore {
+    background-color: #f4f4f4;
+    @at-root {
+      .film-header {
+        position: fixed;
+        top: 0;
         width: 100%;
-        height: 26px;
+        height: 5vh;
+        background-color: rgba($color: #000000, $alpha: 0);
+        z-index: 2;
+        color: transparent;
+        transition: all .4s ease;
+      }
+      .goBack {
+        position: absolute;
+        top: 6px;
+        left: 10px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: rgba($color: #fff, $alpha: 0.8);
+        color: #000;
+        .icon-close {
+          font-size: 26px;
+          font-weight: bold;
+        }
+      }
+      .title {
+        width: 100%;
+        text-align: center;
         font-size: 18px;
+        line-height: 2.4;
+      }
+      .show {
+        background-color: #fff;
+        color: #000;
+      }
+      .film-img {
+        width: 100%;
+        height: 40vh;
+        max-height: 300px;
+        background-color: #383838;
+        overflow: hidden;
+        > img {
+          position: relative;
+          top: -20vh;
+          width: 80%;
+          max-width: 400px;
+          height: 60vh;
+          background-color: #e3e3e3;
+        }
+      }
+      .film-info {
+        padding: 0 18px;
+        font-size: 13px;
+        color: #797d82;
+        text-align: left;
+        background-color: #ffffff;
+      }
+      .film-name {
+        width: 50%;
+        padding: 4px 0;
+        color: #000;
+        text-align: left;
+        :nth-child(1) {
+          font-size: 18px;
+        }
+      }
+      .film-grade {
+        width: 50%;
+        padding: 4px 10px 4px 0;
+        text-align: right;
+        color: #ffb232;
+        span {
+          font-size: 24px;
+          font-weight: lighter;
+          font-style: italic;
+        }
+      }
+      .grey-text {
+        padding: 4px 0;
+      }
+      .film-synopsis {
+        height: 120px;
+        transition: all .6s ease;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .toggle {
         cursor: pointer;
-        background: #eeeeee;
-        transition: all .3s ease-in-out 1 .3s;
+        text-align: center;
+      }
+      .hidden {
+        height: 36px;
+      }
+      .scrollbar {
+        overflow-x: auto;
+        &::-webkit-scrollbar {
+          height: 0;
+        }
+      }
+      .actors {
+        margin-top: 10px;
+        padding: 4px 18px;
+        background-color: #fff;
+        text-align: left;
+        color: #000;
+        img {
+          width: 80px;
+        }
+      }
+      .actor-info {
+        width: 1300px;
+      }
+      .actor-item {
+        float: left;
+        width: 100px;
+        padding: 10px 6px;
+      }
+      .actor-name {
+        font-size: 10px;
+        color: #797d82;
+        overflow: hidden;
+        text-emphasis: ellipsis;
+        span {
+          width: 100%;
+          text-align: center;
+        }
+      }
+      .photos {
+        margin-top: 10px;
+        padding: 4px 18px 60px 18px;
+        overflow-x: auto;
+        background-color: #fff;
+        text-align: left;
+        color: #000;
+        overflow-x: auto;
+        &::-webkit-scrollbar {
+          height: 0;
+        }
+      }
+      .photos-info {
+        img {
+          width: 160px;
+          height: 120px;
+          padding: 10px 12px 10px 0;
+        }
+      }
+      .photos-info {
+        width: 1300px;
+      }
+      .photos-item {
+        float: left;
+      }
+      .goSchedule {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #ff5f16;
+        cursor: pointer;
+        span {
+          padding: 14px 0;
+          font-size: 16px;
+          color: #fff;
+        }
       }
     }
-  }
-}
-
-.active {
-  border-bottom: 3px solid #fe6e00;
-  color: #fe6e00;
-}
-
-.showUp {
-  animation: showUp .8s ease-in-out 0.3s 1;
-}
-
-.hidden {
-  display: none;
-}
-
-@keyframes showUp {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
   }
 }
