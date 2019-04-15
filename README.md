@@ -61,7 +61,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 ## Version 2.0
 
-![image](./v_2.png)
+![image](./v_2.jpg)
 
 ## Thanks
 

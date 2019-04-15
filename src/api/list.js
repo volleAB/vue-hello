@@ -8,6 +8,7 @@ import hotList2 from '../data/hotList2'
 import hotList3 from '../data/hotList3'
 import soonList from '../data/soonList'
 import cityList from '../data/city'
+import cinemasList from '../data/cinemas'
 
 var instance = axios.create(config.movieConfig)
 
@@ -40,9 +41,11 @@ export default {
       resolve(cityList);
     })
   },
-  // getCinemaList(data) {
-  //   return instance.get('/v4/api/cinema?__t=1532321869522', data)
-  // },
+  getCinemasList() {
+    return new Promise((resolve, rejevt) =>{
+      resolve(cinemasList);
+    })
+  },
   // getCinemaInfo(newId) {
   //   return instance.get('/v4/api/cinema/' + newId + '?__t=1532335419519')
   // },

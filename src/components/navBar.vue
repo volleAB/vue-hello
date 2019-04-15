@@ -11,7 +11,7 @@
         </router-link>
       </el-col>
       <el-col :span="8">
-        <router-link :to="{name: 'cinemas'}">
+        <router-link :to="{name: 'mine'}">
           <div class="grid-content nav-bar-item" @click="whichNav = 'cinema'">
             <img :src="whichNav == 'cinema' ? require('../assets/images/nav_cinema_active.png') : require('../assets/images/nav_cinema.png')" alt="">
             <span :class="{'nav-active' : whichNav == 'cinema'}">影院</span>

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../pages/home'
 import Film from '../pages/film'
+import FilmDetail from '../pages/filmDetail'
 import Detail from '../pages/detail'
 import Mine from '../pages/mine'
 import Cinema from '../pages/cinema'
@@ -44,20 +45,24 @@ const routes = [
   },
   {
     path: '/film/:id',
-    name: 'film',
     component: Film,
-    meta: {
-      title: '电影'
-    },
     children: [
       {
-        path: '/cinemas',
-        name: 'filmConema',
+        path: '',
+        name: 'film',
+        component: FilmDetail,
+        meta: {
+          title: '电影'
+        }
+      },
+      {
+        path: 'cinemas',
+        name: 'cinema',
         component: Cinema,
         meta: {
           title: '影院'
         }
-      }
+      },
     ]
   },
   {

@@ -1,5 +1,6 @@
 <template>
   <div id="cinema">
+    {{this.districtName}}
     <div class="container">
       <div class="cinema-item" v-for="(item, index) in cinemaList" :key="index">
         <div class="item-info" @click="goPay(item.id)">
@@ -21,13 +22,32 @@ export default {
       cinemaList: []
     }
   },
-  created () {
-    axiosList.getCinemaList()
+  computed: {
+    districtName() {
+      let dNmaeArr = []
+      let getDistrictName = () => {
+        let newArr = [];
+        this.cinemaList.map((value, index) => {
+          dNmaeArr.push(this.cinemaList[index].districtName);
+        })
+        // for(let i = 0; i < dNmaeArr.length; i++) {
+        //   if(newArr.indexOf(dNmaeArr[i]) == -1) {
+        //     newArr.push(dNmaeArr[i]);
+        //   }
+        // }
+        newArr = [...new Set(dNmaeArr)];
+        return newArr;
+      }
+      return getDistrictName();
+    }
+  },
+  mounted () {
+    axiosList.getCinemasList()
       .then((res) => {
-        this.cinemaList = res.data.data.cinemas;
-        this.cinemaList.splice(21, 90)
+        console.log(res);
+        this.cinemaList = res.data.cinemas;
       }).catch((err) => {
-        console.log(err)
+        console.log(err);
       })
   },
   methods: {
