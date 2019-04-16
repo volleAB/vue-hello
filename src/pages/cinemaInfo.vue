@@ -1,6 +1,6 @@
 <template>
   <div id="cinema">
-    <div class="container">
+    <!-- <div class="container">
       <div class="cinema-banner">
         <img src="../assets/images/cinema.png" alt="">
       </div>
@@ -39,12 +39,12 @@
         {{err}}
       </div>
       <div class="cinema-buy" @click="goPay">立即下单</div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
-require('../assets/scss/cinema.scss')
+// require('../assets/scss/cinema.scss')
 import axiosList from '../api/list'
 
 export default {
@@ -56,15 +56,15 @@ export default {
       err: ''
     }
   },
-  created () {
-    let newId = this.$route.params.id;
-    axiosList.getCinemaInfo(newId)
-      .then((res) => {
-        this.cinemaInfo = res.data.data.cinema
-      }).catch((err) => {
-        console.log(err)
-      })
-  },
+  // mounted() {
+  //   let newId = this.$route.params.id;
+  //   axiosList.getCinemaInfo(newId)
+  //     .then((res) => {
+  //       this.cinemaInfo = res.data.data.cinema
+  //     }).catch((err) => {
+  //       console.log(err)
+  //     })
+  // },
   methods: {
     goGet (el) {
       let reg = /^[0-9]{1,2}/
