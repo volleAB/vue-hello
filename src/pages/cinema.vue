@@ -84,10 +84,15 @@ export default {
       })
     this.getDateList();
     this.navWidth = this.$refs.tabsNav.offsetWidth / 5;
-    console.log(navWidth);
   },
   methods: {
     goPay(id) {
+      this.cinemaList.map((value, index) => {
+        if (this.cinemaList[index].cinemaId == id) {
+          this.$store.state.cinema = this.cinemaList[index];
+          return;
+        }
+      })
       this.$router.push({name: 'cinemaInfo', params: {id: id}});
     },
     getDateList() {
@@ -104,8 +109,6 @@ export default {
       d1 = '今天' + (date.getMonth() + 1) + '月' + date.getDate() + '日';
       date.setDate(date.getDate() + 1);
       d2 = '明天' + (date.getMonth() + 1) + '月' + date.getDate() + '日';
-      date.setDate(date.getDate() + 1);
-      d3 = '后天' + (date.getMonth() + 1) + '月' + date.getDate() + '日';
       date.setDate(date.getDate() + 1);
       d3 = '后天' + (date.getMonth() + 1) + '月' + date.getDate() + '日';
       date.setDate(date.getDate() + 1);

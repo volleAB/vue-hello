@@ -1,5 +1,5 @@
 <template>
-  <div id="home">
+  <div id="home" @scroll="getMoreList()">
     <div class="banner">
       <router-link :to="{name: 'city'}">
         <div class="location">
@@ -132,7 +132,6 @@ export default {
     }
   },
   created () {
-
   },
   mounted() {
     axiosList.getBannerList()
@@ -153,19 +152,11 @@ export default {
     this.clientHeight = document.documentElement.clientHeight;
     // console.log('clientHeight' + this.clientHeight);
     this.$nextTick(() => {
-      window.addEventListener('scroll', (e) => {
-        if(document.documentElement.scrollTop > this.clientHeight - 380 && this.update) {
-          axiosList.getHotList('2')
-            .then((res) => {
-              this.hotList.push(...res.data.films);
-              console.log(this.hotList);
-            }).catch((err) => {
-              console.log(err);
-            })
-          this.update = false;
-        }
-      })
+      window.addEventListener('scroll', this.getMoreList);
     })
+  },
+  destroyed() {
+    window.removeEventListener('scroll', this.getMoreList);
   },
   methods: {
     goBack () {
@@ -191,6 +182,18 @@ export default {
             h('span', { style: 'color: teal' }, '只用于学习(￣▽￣)／')
           ])
         });
+    },
+    getMoreList() {
+      if(document.documentElement.scrollTop > this.clientHeight - 380 && this.update) {
+          axiosList.getHotList('2')
+            .then((res) => {
+              this.hotList.push(...res.data.films);
+              console.log(this.hotList);
+            }).catch((err) => {
+              console.log(err);
+            })
+          this.update = false;
+        }
     }
   }
 }

@@ -28,28 +28,38 @@ export default {
           return this.index = index;
       })
       // console.log(this.$store.state.hotList);
+      this.$store.state.filmIndex = this.index;
       return this.$store.state.hotList[this.index];
     }
   },
-  created () {
+  created() {
     // document.body.scrollTop = 0;
     this.newId = this.$route.params.id;
     console.log(this.newId);
   },
-  mounted () {
-    window.addEventListener('scroll', () => {
+  mounted() {
+    window.addEventListener('scroll', this.getCanShow);
+  },
+  destroyed() {
+    console.log('film');
+    window.removeEventListener('scroll', this.getCanShow);
+  },
+  methods: {
+    goBack() {
+      window.history > 1 ? this.$router.go(-1) : this.$router.push('/');
+    },
+    getCanShow() {
+      console.log('yeah');
       let top = document.documentElement.scrollTop;
       if(top > 20) {
         this.canShow = true;
       } else {
         this.canShow = false;
       }
-    });
-  },
-  methods: {
-    goBack() {
-      window.history > 1 ? this.$router.go(-1) : this.$router.push('/');
     },
+    test() {
+      console.log('123');
+    }
   }
 }
 </script>

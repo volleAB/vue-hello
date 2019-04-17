@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <commes></commes>
+    <!-- <commes></commes> -->
     <transition name="fade">
       <router-view />
     </transition>
@@ -21,7 +21,7 @@ export default {
     }
   },
   components: {
-    commes,
+    // commes,
     navBar
   },
   watch:{

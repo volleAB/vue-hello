@@ -3,7 +3,6 @@ import Router from 'vue-router'
 import Home from '../pages/home'
 import Film from '../pages/film'
 import FilmDetail from '../pages/filmDetail'
-import Detail from '../pages/detail'
 import Mine from '../pages/mine'
 import Cinema from '../pages/cinema'
 import CinemaInfo from '../pages/cinemaInfo'
@@ -64,14 +63,6 @@ const routes = [
         }
       },
     ]
-  },
-  {
-    path: '/detail/:id',
-    name: 'detail',
-    component: Detail,
-    meta: {
-      title: '详情页'
-    }
   },
   {
     path: '/cinemas',

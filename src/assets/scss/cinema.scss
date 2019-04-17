@@ -1,0 +1,82 @@
+#cinema {
+  color: #000;
+  @at-root {
+    .cinema-name {
+      padding: 40px 0 20px 0;
+      font-size: 16px;
+    }
+    .cinema-address {
+      display: flex;
+      justify-content: flex-start;
+      // justify-items: center;
+      align-items: center;
+      // text-align: center;
+      .cinema-location {
+        flex: 1;
+      }
+      span {
+        font-size: 36px;
+      }
+    }
+    .cinema-phone {
+      display: flex;
+      align-items: center;
+      span {
+        font-size: 36px;
+      }
+    }
+    .cinema-tel {
+      flex: 1;
+    }
+    .cinema-film-poster {
+      position: relative;
+      background: linear-gradient(
+        rgba(226, 226, 226, .6), rgba(183, 89, 80, 0.6),
+        rgba(93, 39, 34, 0.6),rgba(190, 190, 190, 0.6)
+        );
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-14px);
+        border: 14px solid #fff;
+        border-color: transparent transparent #fff transparent;
+      }
+      img {
+        width: 30%;
+        margin: 20px 0;
+      }
+    }
+    .cinema-film-info {
+      padding: 14px 10px;
+    }
+    .cinema-film-name {
+      text-align: center;
+      font-size: 16px;
+      :nth-child(2) {
+        color: #ffb232;
+      }
+    }
+    .cinema-film-main {
+      padding-top: 10px;
+      font-size: 13px;
+      color: #797d82;
+    }
+    .cinema-film-actors {
+      display: inline-block;
+      width: 40%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      vertical-align: bottom;
+      span {
+        padding: 0 2px;
+      }
+    }
+    .play-time {
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+}
