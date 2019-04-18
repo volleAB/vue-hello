@@ -1,3 +1,6 @@
+import store from '@/store'
+import router from '@/router'
+
 let requestFunction = config => {
   //判断是否存在token，如果存在的话，则每个http header都加上token
   if (store.state.token) {

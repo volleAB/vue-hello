@@ -8,14 +8,17 @@ const actions = {
   switch_mes({ commit }, data) {
     commit('switch_mes', data);
   },
-  UserLogin({ commit }, data){
+  UserLogin({ commit }, data) {
     commit('LOGIN', data);
   },
-  UserLogout({ commit }){
-      commit('LOGOUT');
+  UserLogout({ commit }) {
+    commit('LOGOUT');
   },
-  UserName({ commit }, data){
-      commit('USERNAME', data);
+  UserName({ commit }, data) {
+    commit('USERNAME', data);
+  },
+  SetCookieUserName({ commit }, data) {
+    commit('setCookies', data);
   }
 }
 

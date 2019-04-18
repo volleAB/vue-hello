@@ -23,6 +23,13 @@ const mutations = {
       //把用户名存起来
       state.username = data;
       window.sessionStorage.setItem('username', data);
+  },
+  setCookies: (state, data) => {
+    state.cookieUserName = data;
+    let Days = 30;
+    let exp = new Date();
+    exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+    document.cookie = 'name' + '=' + escape(data) + ';expires=' + exp.toGMTString();
   }
 }
 

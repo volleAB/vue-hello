@@ -8,14 +8,14 @@ const Router = require('koa-router');
 const router = new Router();
 
 //bodyparser:该中间件用于post请求的数据
-const bodyParser = require('koa-bodyparser');
-app.use(bodyParser());
+const koaBody = require('koa-body');
+app.use(koaBody());
 
 //引入数据库操作方法
-const UserController = require('./server/controller/user.js');
+const UserController = require('./controller/user.js');
 
 //checkToken作为中间件存在
-const checkToken = require('./server/token/checkToken.js');
+const checkToken = require('./token/checkToken.js');
 
 //登录
 const loginRouter = new Router();
@@ -39,8 +39,6 @@ getUserRouter.post('/oneUser', checkToken, UserController.GetOneUser);
 //添加我喜欢
 const addFavMoive = new Router();
 addFavMoive.post('/movie', checkToken, UserController.AddMoive);
-
-
 
 //装载上面四个子路由
 router.use('/api',loginRouter.routes(),loginRouter.allowedMethods());

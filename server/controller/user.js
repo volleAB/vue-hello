@@ -65,14 +65,17 @@ const addMovie = (username, moviename) => {
   })
 };
 
+//设置cookie
+const setCookie = (ctx) => {
+  ctx.cookies.set(token, )
+}
+
 //登录
 const Login = async(ctx) => {
   //拿到账号和密码
   let username = ctx.request.body.name;
   let password = sha1(ctx.request.body.pass);
-
   let doc = await findUser(username);
-
   if (!doc) {
     console.log('检查到用户名不存在');
     ctx.status = 200;
@@ -116,7 +119,7 @@ const Reg = async(ctx) => {
     password: sha1(ctx.request.body.pass), //加密
     token: createToken(this.username) //创建token并存入数据库
   });
-
+  console.log('注册');
   //将objectid转换为用户创建时间(可以不用)
   user.create_time = moment(objectIdToTimestamp(user._id)).format('YYYY-MM-DD HH:mm:ss');
   let doc = await findUser(user.username);
@@ -132,9 +135,7 @@ const Reg = async(ctx) => {
         if (err) {
           reject(err);
         }
-
         resolve();
-
       });
     });
     console.log('注册成功');
@@ -170,7 +171,7 @@ const DelUser = async(ctx) => {
 const GetOneUser = async(ctx) => {
   let username = ctx.request.body.name;
   let doc = await findUser(username);
-
+  console.log(username);
   ctx.status = 200;
   ctx.body = {
     success: '成功',
@@ -189,7 +190,6 @@ const AddMoive = async(ctx) => {
     data: doc
   };
 }
-
 
 module.exports = {
   Login,

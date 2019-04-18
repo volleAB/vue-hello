@@ -10,15 +10,15 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/movieapi': {
-        target: 'https://m.maizuo.com',// 请换成你的地址
-        changeOrigin: true,
-        pathRewrite: {
-          '^/movieapi': ''
-        }
-      },
+      // '/movieapi': {
+      //   target: 'https://m.maizuo.com',// 请换成你的地址
+      //   changeOrigin: true,
+      //   pathRewrite: {
+      //     '^/movieapi': ''
+      //   }
+      // },
       '/api': {
-        target: 'http://59.68.29.67:8001',
+        target: 'http://localhost:8888',
         changeOrigin: true,
       }
     },

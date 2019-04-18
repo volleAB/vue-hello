@@ -9,6 +9,7 @@ import CinemaInfo from '../pages/cinemaInfo'
 import Pay from '../pages/pay'
 import Login from '../pages/login'
 import City from '../pages/city'
+import store from '../store/index'
 // import HelloWorld from '@/components/HelloWorld'
 
 Vue.use(Router)
@@ -86,6 +87,13 @@ const routes = [
     component: Mine,
     meta: {
       title: '个人中心'
+    },
+    beforeEnter: (to, from, next) => {
+      let token = store.state.token;
+      if(token == null) {
+        return next({path: '/login'});
+      }
+      next();
     }
   },
   {
@@ -128,17 +136,10 @@ router.beforeEach((to, from, next) => {
     document.title = to.meta.title;
   }
   // let token = store.state.token;
-  // if (to.meta.requiresAuth) {
-  //   if (token) {
-  //     next();
-  //   } else {
-  //     next({
-  //       path: '/login',
-  //       query: { redirect: to.fullPath } // 将刚刚要去的路由path作为参数，方便登录成功后直接跳转到该路由
-  //     });
-  //   }
+  // if(to.meta.title == '个人中心' && token) {
+  //   return next();
   // } else {
-  //   next();
+  //   return next({path: '/login'});
   // }
   next();
 })

@@ -104,9 +104,7 @@
 
 <script>
 require('../assets/scss/home.scss');
-import 'swiper/dist/css/swiper.css';
 import axiosList from '../api/list';
-import { swiper, swiperSlide } from 'vue-awesome-swiper';
 import { mapActions } from 'vuex';
 
 export default {
@@ -123,8 +121,6 @@ export default {
     }
   },
   components: {
-    swiper,
-    swiperSlide
   },
   computed: {
     username () {

@@ -5,6 +5,7 @@ import App from './App';
 import router from './router';
 import store from './store/index';
 import { Button, Select, Carousel, CarouselItem, col, row, Message } from 'element-ui';
+// import lottie from 'vue-lottie'
 
 Vue.config.productionTip = false;
 
@@ -14,6 +15,9 @@ Vue.use(Carousel);
 Vue.use(CarouselItem);
 Vue.use(col);
 Vue.use(row);
+
+// Vue.component('lottie', lottie);
+
 Vue.prototype.$message = Message;
 
 /* eslint-disable no-new */

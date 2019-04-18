@@ -10,6 +10,8 @@ let movieConfig = {
   headers: { 'Content-Type': 'application/json;charset=UTF-8' }
 }
 
+// export default userConfig;
+
 module.exports = {
   userConfig,
   movieConfig

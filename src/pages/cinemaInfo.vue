@@ -59,10 +59,16 @@
       <div class="go-seat">
         <h3>订座票</h3>
         <span>选好场次及座位，到影院自助机取票</span>
-        <button @click="on = true,err = ''">立即订座</button>
+        <div class="booking" @click="on = true,err = ''">立即订座</div>
       </div>
     </div>
-    <div class="cinema-buy" @click="goPay">立即下单</div>
+    <div class="cinema-buy">
+      <div class="cinema-seatInfo">
+        <input class="cinema-input" type="text" v-model="seatNumber.row"><span>排</span>
+        <input class="cinema-input" type="text" v-model="seatNumber.col"><span>号</span>
+      </div>
+      <div class="pay" @click="goPay">立即下单</div>
+    </div>
   </div>
 </template>
 
@@ -73,6 +79,7 @@ import axiosList from '../api/list'
 export default {
   data () {
     return {
+      seatNumber: {},
       cinemaInfo: {},
       filmInfo: {},
       on: false,
