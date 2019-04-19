@@ -51,49 +51,42 @@
 #mine {
   position: relative;
   width: 100%;
-  height: 400px;
-  margin: 58px auto;
-  .user {
-    width: 100%;
-    img {
-      max-width: 600px;
-      width: 100%;
-      height: 240px;
+  height: 100vh;
+  margin: 0px auto;
+  > img {
+    position: absolute;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    opacity: .6;
+    z-index: 1;
+    filter: grayscale(68%);
+  }
+  @at-root {
+    .user-pic {
+      margin: 0 auto;
+      img {
+        width: 120px;
+        height: 120px;
+        border-radius: 100%;
+      }
     }
     .user-show {
-      max-width: 600px;
+      position: absolute;
       width: 100%;
-      height: 340px;
-      margin-top: 20px;
-      color: #000000;
-      .user-info {
-        width: 100%;
-        height: 340px;
-        padding: 40px;
-        border: 1px solid #555;
-        border-radius: 10px;
+      margin-top: 60px;
+      font-size: 20px;
+      color: #000;
+      z-index: 10;
+      h3 {
+        font-size: 28px;
       }
-      .user-movie {
-        position: relative;
-        width: 100%;
-        height: 340px;
-        padding: 20px;
-        border: 1px solid #555;
-        border-radius: 10px;
-        &:after {
-          position: absolute;
-          top: 10px;
-          right: 10px;
-          content: '修改';
-          cursor: pointer;
-          color: #fe8233;
-        }
-      }
+    }
+    .user-info {
+      padding: 10px 40px;
       li {
-        width: 100%;
-        height: 40px;
         margin-top: 10px;
-        border-bottom: 1px solid salmon;
+        font-size: 22px;
         text-align: left;
       }
     }

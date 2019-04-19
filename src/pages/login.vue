@@ -116,7 +116,7 @@ export default {
     },
     handleAnimation: function (anim) {
       this.anim = anim;
-    },
+    }
   }
 }
 </script>

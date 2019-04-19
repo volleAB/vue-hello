@@ -43,23 +43,24 @@ const delUser = function(id) {
   });
 };
 //找到用户并添加电影
-const addMovie = (username, moviename) => {
+const AddFilmTicket = (username, filmTicket) => {
   return new Promise((resolve, reject) => {
-    let movie = [];
+    let film = [];
     User.findOne({ username }, (err, doc) => {
       if (err) {
         reject(err);
       }
-      movie = doc.favorite_movie;
-      movie.push(moviename);
+      film = doc.film_tickets;
+      film.push(filmTicket);
       User.update(
         {username: username},
-        {favorite_movie: movie},
-        {multi: true}, (err, doc) => {
-        if(err) console.log(err);
-        console.log('更改成功：');
-        resolve(doc);
-      })
+        {film_tickets: film},
+        {multi: true},
+        (err, doc) => {
+          if(err) console.log(err);
+          console.log('更改成功：');
+          resolve(doc);
+        })
       resolve(doc);
     });
   })
@@ -196,6 +197,6 @@ module.exports = {
   Reg,
   GetAllUsers,
   DelUser,
-  AddMoive,
+  AddFilmTicket,
   GetOneUser
 };

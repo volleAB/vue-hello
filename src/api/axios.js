@@ -33,7 +33,7 @@ export default {
     return instance.post('/delUser', data);
   },
   //添加我喜欢
-  getFavMoive(data) {
-    return instance.post('/movie', data)
+  addFilmTicket(data) {
+    return instance.post('/ticket', data)
   }
 }

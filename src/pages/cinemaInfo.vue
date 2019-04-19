@@ -59,15 +59,31 @@
       <div class="go-seat">
         <h3>订座票</h3>
         <span>选好场次及座位，到影院自助机取票</span>
-        <div class="booking" @click="on = true,err = ''">立即订座</div>
+        <div class="booking" @click="booking = true">立即订座</div>
       </div>
     </div>
-    <div class="cinema-buy">
+    <div class="cinema-buy" :class="{'booking-active' : booking}">
       <div class="cinema-seatInfo">
-        <input class="cinema-input" type="text" v-model="seatNumber.row"><span>排</span>
-        <input class="cinema-input" type="text" v-model="seatNumber.col"><span>号</span>
+        <el-select v-model="selectNumber.row" placeholder="请选择">
+          <el-option
+            v-for="(item, index) in seatNumber.row"
+            :key="index"
+            :label="item"
+            :value="item">
+          </el-option>
+        </el-select>
+        <span>排</span>
+        <el-select v-model="selectNumber.col" placeholder="请选择">
+          <el-option
+            v-for="(item, index) in seatNumber.col"
+            :key="index"
+            :label="item"
+            :value="item">
+          </el-option>
+        </el-select>
+        <span>号</span>
       </div>
-      <div class="pay" @click="goPay">立即下单</div>
+      <el-button type="primary" @click="goPay">确定</el-button>
     </div>
   </div>
 </template>
@@ -80,21 +96,23 @@ export default {
   data () {
     return {
       seatNumber: {},
+      selectNumber: {},
       cinemaInfo: {},
       filmInfo: {},
-      on: false,
+      booking: false,
       canShow: false,
       dateList: [],
-      nowLeft: Number
+      nowLeft: Number,
+      passMsg: {}
     }
   },
-  // create() {
-
-  // },
-  mounted() {
+  created() {
+    this.creatSeatNum();
+    this.getDateList();
     this.cinemaInfo = this.$store.state.cinema;
     this.filmInfo = this.$store.state.hotList[this.$store.state.filmIndex];
-    this.getDateList()
+  },
+  mounted() {
     window.addEventListener('scroll', () => {
       let top = document.documentElement.scrollTop;
       if(top > 20) {
@@ -105,14 +123,14 @@ export default {
     });
   },
   methods: {
-    goGet (el) {
+    goGet(el) {
       let reg = /^[0-9]{1,2}/
       this.mes = ''
       if(!this.col || !this.row) {
         this.on = true
         this.mes = "请填写行列！！！"
         return
-      }else if(!reg.test(this.col) || !reg.test(this.row)) {
+      } else if(!reg.test(this.col) || !reg.test(this.row)) {
         this.on = true
         this.mes = "请填写两位数数字！！！"
         return
@@ -120,15 +138,38 @@ export default {
       console.log(this.col, this.row);
       this.on = false;
     },
-    goPay () {
-      if(!this.col || !this.row) {
-        this.err = "请填写座次！！！"
-        return
-      }else if(this.$store.state.movieName == '') {
-        return
+    goPay() {
+      if(!this.selectNumber.col || !this.selectNumber.row) {
+        this.$message({
+          message: '警告哦，您没有选择座位',
+          type: 'warning'
+        });
+      } else if(this.$store.state.movieName == '') {
+        this.$message({
+          message: '警告哦，您没有要看的影片',
+          type: 'warning'
+        });
+      } else if(this.$store.state.username == '') {
+        this.$message({
+          message: '警告哦，您还没有登录',
+          type: 'warning'
+        });
+        return this.$router.push({name: 'login'});
+      } else {
+        this.$message({
+          message: '恭喜你，订票成功',
+          type: 'success'
+        });
       }
-      this.$store.state.cinemaName = this.cinemaInfo.address
-      this.$router.push({name: 'pay', query: {col: this.col, row: this.row}})
+      this.booking = false;
+      this.passMsg = {
+        cinemaName: this.cinemaInfo.name,
+        movieName: this.filmInfo.name,
+        col: this.selectNumber.col,
+        row: this.selectNumber.row,
+        date: this.dateList[0]
+      }
+      this.$router.push({name: 'pay', query: {info: this.passMsg}})
     },
     goBack() {
       window.history > 1 ? this.$router.go(-1) : this.$router.push('/');
@@ -150,6 +191,16 @@ export default {
       date.setDate(date.getDate() + 1);
       d3 = '后天' + (date.getMonth() + 1) + '月' + date.getDate() + '日';
       this.dateList = [d1, d2, d3];
+    },
+    creatSeatNum() {
+      let arr = [];
+      let i = 1;
+      while (i <= 30) {
+        arr.push(i);
+        i++;
+      }
+      this.seatNumber.row = ['A', 'B', 'C', 'D', 'E', 'F'];
+      this.seatNumber.col = arr;
     }
   }
 }

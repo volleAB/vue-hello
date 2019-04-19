@@ -1,27 +1,17 @@
 <template>
   <div id="mine">
-    <div class="user">
-      <img src="../assets/images/user.jpg" alt="user">
-      <div class="user-show">
-        <div class='slide'>
-          <div class="user-info">
-            <h3>用户详情</h3>
-            <ul>
-              <li>用户名：{{userName}}</li>
-              <li>创建日期：{{creatTime}}</li>
-              <li>喜爱：</li>
-            </ul>
-          </div>
-        </div>
-        <div class='slide'>
-          <div class="user-movie">
-            <h3>最喜欢</h3>
-            <ul>
-              <li v-for="(item, index) in favMovie" :key="index">{{item}}</li>
-            </ul>
-          </div>
-        </div>
-        <div class="swiper-scrollbar" slot="scrollbar"></div>
+    <img src="../assets/images/b1.jpeg" alt="user">
+    <div class="user-show">
+      <div class="user-pic">
+        <img src="../assets/images/user.jpg" alt="user">
+      </div>
+      <div class="user-info">
+        <h3>用户详情</h3>
+        <ul>
+          <li>用户名：{{userName}}</li>
+          <li>创建日期：{{creatTime}}</li>
+          <li>电影票：{{filmTics}}</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -41,7 +31,7 @@ export default {
       },
       userName: '',
       creatTime: '',
-      favMovie: []
+      filmTics: []
     }
   },
   components: {

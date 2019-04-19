@@ -18,7 +18,7 @@ const userSchema = mongoose.Schema({
     password: String,
     token: String,
     create_time: Date,
-    favorite_movie: Array
+    film_tickets: Array
 });
 //根据schema生成model
 const model = {

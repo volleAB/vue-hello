@@ -1,37 +1,38 @@
 <template>
   <div id="pay">
-    <div class="container" @click="on = false">
-      <img src="../assets/images/pay.jpg" alt="pay">
-      <div class="pay-info">
-        <div class="cinema-name clearfix">
-          <i class="icon iconfont icon-bulb"></i>
-          <div class="cinema-location">{{movie}}</div>
-        </div>
-        <div class="cinema-name clearfix">
-          <i class="icon iconfont icon-movie"></i>
-          <div class="cinema-location">{{cinema}}</div>
-        </div>
-        <div class="cinema-name clearfix">
-          <i class="icon iconfont icon-ticket"></i>
-          <div class="cinema-location">座位：{{row}}行{{col}}列</div>
-        </div>
-        <div class="cinema-name clearfix">
-          <i class="icon iconfont icon-ticket"></i>
-          <div class="cinema-location">金额为：50元</div>
-        </div>
+    <lottie :options="defaultOptions" :height="200" :width="200" v-on:animCreated="handleAnimation"/>
+    <div class="pay-info">
+      <div class="pay-info-item">
+        <span class="iconfont icon-address"></span>
+        <span>{{cinema}}</span>
       </div>
-      <div class="box" :class="{block: on}">
-        购买成功
+      <div class="pay-info-item">
+        <span class="iconfont icon-conversation"></span>
+        <span>{{movie}}</span>
+      </div>
+      <div class="pay-info-item">
+        <span class="iconfont icon-history"></span>
+        <span>{{date}}</span>
+      </div>
+      <div class="pay-info-item">
+        <span class="iconfont icon-face"></span>
+        <span>{{row}}排{{col}}号</span>
+      </div>
+      <div class="pay-info-item">
+        <span class="iconfont icon-safety"></span>
+        <span>{{price}}元</span>
       </div>
     </div>
-    <div class="buy" @click="on = true">
-      购买
-    </div>
+    <el-button type="success" round class="pay" @click="payTic">购买</el-button>
   </div>
 </template>
 
 <script>
 require('../assets/scss/pay.scss')
+import axios from '../api/axios'
+import Lottie from 'vue-lottie';
+import * as lottiePay from '../assets/icon/pay.json';
+
 
 export default {
   data () {
@@ -40,18 +41,33 @@ export default {
       row: '',
       moive: '',
       cinema: '',
-      on: false
+      price: parseInt((Math.random() + 1) * 60),
+      defaultOptions: {animationData: lottiePay, loop: true}
     }
   },
+  components: {
+    Lottie
+  },
   created () {
-    this.col = this.$route.query.col
-    this.row = this.$route.query.row
-    this.movie = this.$store.state.movieName
-    this.cinema = this.$store.state.cinemaName
-    console.log(this.cinema)
+    this.col = this.$route.query.info.col;
+    this.row = this.$route.query.info.row;
+    this.movie = this.$route.query.info.movieName;
+    this.cinema = this.$route.query.info.cinemaName;
+    this.date = this.$route.query.info.date;
+    // console.log(this.$route.query);
   },
   methods: {
-
+    handleAnimation(anim) {
+      this.anim = anim;
+    },
+    payTic() {
+      // axios.addFilmTicket
+      this.$message({
+        message: '恭喜你，支付成功',
+        type: 'success'
+      });
+      this.$router.push({name: 'home'});
+    }
   }
 }
 </script>

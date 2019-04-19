@@ -37,8 +37,8 @@ const getUserRouter = new Router();
 getUserRouter.post('/oneUser', checkToken, UserController.GetOneUser);
 
 //添加我喜欢
-const addFavMoive = new Router();
-addFavMoive.post('/movie', checkToken, UserController.AddMoive);
+const addFilmTicket = new Router();
+addFilmTicket.post('/ticket', checkToken, UserController.AddFilmTicket);
 
 //装载上面四个子路由
 router.use('/api',loginRouter.routes(),loginRouter.allowedMethods());
@@ -46,7 +46,7 @@ router.use('/api',registerRouter.routes(),registerRouter.allowedMethods());
 router.use('/api',userRouter.routes(),userRouter.allowedMethods());
 router.use('/api',delUserRouter.routes(),delUserRouter.allowedMethods());
 router.use('/api',getUserRouter.routes(),getUserRouter.allowedMethods())
-router.use('/api',addFavMoive.routes(),addFavMoive.allowedMethods())
+router.use('/api',addFilmTicket.routes(),addFilmTicket.allowedMethods())
 
 
 

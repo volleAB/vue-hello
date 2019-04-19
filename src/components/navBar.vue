@@ -53,6 +53,7 @@ export default {
     bottom: 0;
     width: 100%;
     background-color: #fff;
+    z-index: 10;
   }
   .nav-bar-item {
     position: relative;

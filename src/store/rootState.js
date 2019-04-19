@@ -3,7 +3,6 @@ const state = {
   token: window.sessionStorage.getItem('token'),
   // token: 'window.sessionStorage.getItem',
   username: '', //用户名
-  loginState: false,  //登录状态
   filmIndex: Number,
   bannerList: [], //头部滚动
   hotList: [],  //热映电影
