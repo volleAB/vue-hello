@@ -90,7 +90,8 @@ const routes = [
     },
     beforeEnter: (to, from, next) => {
       let token = store.state.token;
-      if(token == null) {
+      let username = store.state.username;
+      if(token == null || username == '') {
         return next({path: '/login'});
       }
       next();

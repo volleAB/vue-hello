@@ -43,28 +43,59 @@ const delUser = function(id) {
   });
 };
 //找到用户并添加电影
-const AddFilmTicket = (username, filmTicket) => {
+const addFilmTicket = (username, filmTic) => {
   return new Promise((resolve, reject) => {
-    let film = [];
+    let filmTics = [];
     User.findOne({ username }, (err, doc) => {
+      let date = new Date();
+      let nowDate = (date.getMonth() + 1) + '月' + date.getDate() + '日';
+      filmTics = doc.film_tickets;
+      filmTics.map((value, index) => {
+        if (filmTics[index].date < nowDate) {
+          filmTics[index].effective = false;
+        }
+      })
       if (err) {
         reject(err);
       }
-      film = doc.film_tickets;
-      film.push(filmTicket);
+      filmTics.push(filmTic);
       User.update(
         {username: username},
-        {film_tickets: film},
+        {film_tickets: filmTics},
         {multi: true},
         (err, doc) => {
           if(err) console.log(err);
           console.log('更改成功：');
           resolve(doc);
-        })
-      resolve(doc);
+        });
+        resolve(doc);
     });
   })
 };
+
+const delFilmTicket = (username, filmIndex) => {
+  return new Promise((resolve, reject) => {
+    let filmTics = [];
+    User.findOne({ username }, (err, doc) => {
+      if(err) {
+        reject(err);
+      } else {
+        filmTics = doc.film_tickets;
+        filmTics.splice(filmIndex, 1);
+      }
+      User.update(
+        {username: username},
+        {film_tickets: filmTics},
+        {multi: true},
+        (err, doc) => {
+          if(err) console.log(err);
+          console.log('更改成功：');
+          resolve(doc);
+        });
+      resolve(doc);
+    });
+  })
+}
 
 //设置cookie
 const setCookie = (ctx) => {
@@ -172,7 +203,8 @@ const DelUser = async(ctx) => {
 const GetOneUser = async(ctx) => {
   let username = ctx.request.body.name;
   let doc = await findUser(username);
-  console.log(username);
+
+  // console.log(username);
   ctx.status = 200;
   ctx.body = {
     success: '成功',
@@ -180,11 +212,21 @@ const GetOneUser = async(ctx) => {
   };
 }
 
-//添加喜欢的电影
-const AddMoive = async(ctx) => {
+//订购电影票
+const AddFilmTicket = async(ctx) => {
+  // console.log(ctx.request.body);
   let username = ctx.request.body.name;
-  let moviename = ctx.request.body.movie;
-  let doc = await addMovie(username, moviename);
+  let filmTic = {
+    col: ctx.request.body.col,
+    row: ctx.request.body.row,
+    movie: ctx.request.body.movie,
+    cinema: ctx.request.body.cinema,
+    price: ctx.request.body.price,
+    date: ctx.request.body.date,
+    effective: ctx.request.body.effective
+  }
+  let doc = await addFilmTicket(username, filmTic);
+  // console.log(doc);
   ctx.status = 200;
   ctx.body = {
     success: '添加成功',
@@ -192,11 +234,23 @@ const AddMoive = async(ctx) => {
   };
 }
 
+const DelFilmTicket = async(ctx) => {
+  let username = ctx.request.body.name;
+  let filmIndex = ctx.request.body.index;
+  let doc = await delFilmTicket(username, filmIndex);
+  ctx.status = 200;
+  ctx.body = {
+    success: '删除成功',
+    data: doc
+  };
+}
+
 module.exports = {
-  Login,
-  Reg,
-  GetAllUsers,
-  DelUser,
-  AddFilmTicket,
-  GetOneUser
+  Login,  //登录
+  Reg,  //注册
+  GetAllUsers,  //获取所有用户信息
+  DelUser,  //删除用户
+  AddFilmTicket,  //添加电影票
+  GetOneUser, //获取某个用户
+  DelFilmTicket //删除电影票
 };

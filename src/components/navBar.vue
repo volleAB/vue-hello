@@ -4,7 +4,8 @@
     <el-row :gutter="20">
       <el-col :span="8">
         <router-link :to="{name: 'home'}">
-          <div class="grid-content nav-bar-item" @click="whichNav = 'film'">
+          <!-- <div class="grid-content nav-bar-item" @click="whichNav = 'film'"> -->
+          <div class="grid-content nav-bar-item">
             <img :src="whichNav == 'film' ? require('../assets/images/nav_film_active.png') : require('../assets/images/nav_film.png')" alt="">
             <span :class="{'nav-active' : whichNav == 'film'}">电影</span>
           </div>
@@ -12,7 +13,8 @@
       </el-col>
       <el-col :span="8">
         <router-link :to="{name: 'cinemas'}">
-          <div class="grid-content nav-bar-item" @click="whichNav = 'cinema'">
+          <!-- <div class="grid-content nav-bar-item" @click="whichNav = 'cinema'"> -->
+          <div class="grid-content nav-bar-item">
             <img :src="whichNav == 'cinema' ? require('../assets/images/nav_cinema_active.png') : require('../assets/images/nav_cinema.png')" alt="">
             <span :class="{'nav-active' : whichNav == 'cinema'}">影院</span>
           </div>
@@ -20,7 +22,8 @@
       </el-col>
       <el-col :span="8">
         <router-link :to="{name: 'mine'}">
-          <div class="grid-content nav-bar-item" @click="whichNav = 'mine'">
+          <!-- <div class="grid-content nav-bar-item" @click="whichNav = 'mine'"> -->
+          <div class="grid-content nav-bar-item">
             <img :src="whichNav == 'mine' ? require('../assets/images/nav_mine_active.png') : require('../assets/images/nav_mine.png')" alt="">
             <span :class="{'nav-active' : whichNav == 'mine'}">我的</span>
           </div>
@@ -37,6 +40,18 @@ export default {
     return {
       whichNav: 'film',
       isActive: true
+    }
+  },
+  watch:{
+    $route(to,from){
+      if (to.path.includes('cinema')) {
+        this.whichNav = 'cinema';
+      } else if (to.path.includes('mine') || to.path.includes('login')) {
+        this.whichNav = 'mine';
+      } else {
+        this.whichNav = 'film';
+      }
+      // console.log(to.path);
     }
   },
   methods: {

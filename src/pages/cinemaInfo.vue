@@ -135,15 +135,18 @@ export default {
         this.mes = "请填写两位数数字！！！"
         return
       }
-      console.log(this.col, this.row);
+      // console.log(this.col, this.row);
       this.on = false;
     },
     goPay() {
+      let newDate = '';
+      let reg = /\d/;
       if(!this.selectNumber.col || !this.selectNumber.row) {
         this.$message({
           message: '警告哦，您没有选择座位',
           type: 'warning'
         });
+        return;
       } else if(this.$store.state.movieName == '') {
         this.$message({
           message: '警告哦，您没有要看的影片',
@@ -161,13 +164,14 @@ export default {
           type: 'success'
         });
       }
+      newDate = this.dateList[0].slice(this.dateList[0].match(reg).index);
       this.booking = false;
       this.passMsg = {
         cinemaName: this.cinemaInfo.name,
         movieName: this.filmInfo.name,
         col: this.selectNumber.col,
         row: this.selectNumber.row,
-        date: this.dateList[0]
+        date: newDate
       }
       this.$router.push({name: 'pay', query: {info: this.passMsg}})
     },

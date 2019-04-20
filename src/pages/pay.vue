@@ -4,23 +4,23 @@
     <div class="pay-info">
       <div class="pay-info-item">
         <span class="iconfont icon-address"></span>
-        <span>{{cinema}}</span>
+        <span>{{payInfo.cinema}}</span>
       </div>
       <div class="pay-info-item">
         <span class="iconfont icon-conversation"></span>
-        <span>{{movie}}</span>
+        <span>{{payInfo.movie}}</span>
       </div>
       <div class="pay-info-item">
         <span class="iconfont icon-history"></span>
-        <span>{{date}}</span>
+        <span>{{payInfo.date}}</span>
       </div>
       <div class="pay-info-item">
         <span class="iconfont icon-face"></span>
-        <span>{{row}}排{{col}}号</span>
+        <span>{{payInfo.row}}排{{payInfo.col}}号</span>
       </div>
       <div class="pay-info-item">
         <span class="iconfont icon-safety"></span>
-        <span>{{price}}元</span>
+        <span>{{payInfo.price}}元</span>
       </div>
     </div>
     <el-button type="success" round class="pay" @click="payTic">购买</el-button>
@@ -37,11 +37,16 @@ import * as lottiePay from '../assets/icon/pay.json';
 export default {
   data () {
     return {
-      col: '',
-      row: '',
-      moive: '',
-      cinema: '',
-      price: parseInt((Math.random() + 1) * 60),
+      payInfo: {
+        name: this.$store.state.username,
+        col: '',
+        row: '',
+        moive: '',
+        cinema: '',
+        price: parseInt((Math.random() + 1) * 60),
+        date: '',
+        effective: true
+      },
       defaultOptions: {animationData: lottiePay, loop: true}
     }
   },
@@ -49,11 +54,11 @@ export default {
     Lottie
   },
   created () {
-    this.col = this.$route.query.info.col;
-    this.row = this.$route.query.info.row;
-    this.movie = this.$route.query.info.movieName;
-    this.cinema = this.$route.query.info.cinemaName;
-    this.date = this.$route.query.info.date;
+    this.payInfo.col = this.$route.query.info.col;
+    this.payInfo.row = this.$route.query.info.row;
+    this.payInfo.movie = this.$route.query.info.movieName;
+    this.payInfo.cinema = this.$route.query.info.cinemaName;
+    this.payInfo.date = this.$route.query.info.date;
     // console.log(this.$route.query);
   },
   methods: {
@@ -61,7 +66,12 @@ export default {
       this.anim = anim;
     },
     payTic() {
-      // axios.addFilmTicket
+      axios.addFilmTicket(this.payInfo)
+        .then((res) => {
+          console.log(res);
+        }, (err) => {
+          console.log(err);
+        })
       this.$message({
         message: '恭喜你，支付成功',
         type: 'success'

@@ -80,6 +80,7 @@ export default {
               let token = data.token;
               let username = data.username;
               this.$store.state.username = data.username;
+              this.$store.state.filmTickets = data.filmTickets;
               this.$store.dispatch('UserLogin', token);
               this.$store.dispatch('UserName', username);
               this.$store.dispatch('SetCookieUserName', username);
@@ -93,10 +94,10 @@ export default {
         return false
       }
     },
-    goRegister () {
+    goRegister() {
       this.login = !this.login;
     },
-    registerIt () {
+    registerIt() {
       let reg = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
       //注册
       if (reg.test(this.registerForm.name)&&this.registerForm.pass!=''&&this.registerForm.checkPass==this.registerForm.pass) {

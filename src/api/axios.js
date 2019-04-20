@@ -32,8 +32,12 @@ export default {
   delUser(data) {
     return instance.post('/delUser', data);
   },
-  //添加我喜欢
+  //购买电影票
   addFilmTicket(data) {
     return instance.post('/ticket', data)
+  },
+  //退订电影票
+  delFilmTicket(data) {
+    return instance.post('/delticket', data)
   }
 }

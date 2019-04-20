@@ -26,7 +26,7 @@ export default {
   },
   watch:{
     $route(to, from){
-      if(to.path.includes('film')) {
+      if(to.path.includes('film') || to.path.includes('cinema') || to.path.includes('pay')) {
         this.isHidden = true;
       } else {
         this.isHidden = false;

@@ -36,18 +36,22 @@ delUserRouter.post('/delUser', checkToken, UserController.DelUser);
 const getUserRouter = new Router();
 getUserRouter.post('/oneUser', checkToken, UserController.GetOneUser);
 
-//添加我喜欢
+//购买电影票
 const addFilmTicket = new Router();
 addFilmTicket.post('/ticket', checkToken, UserController.AddFilmTicket);
 
-//装载上面四个子路由
-router.use('/api',loginRouter.routes(),loginRouter.allowedMethods());
-router.use('/api',registerRouter.routes(),registerRouter.allowedMethods());
-router.use('/api',userRouter.routes(),userRouter.allowedMethods());
-router.use('/api',delUserRouter.routes(),delUserRouter.allowedMethods());
-router.use('/api',getUserRouter.routes(),getUserRouter.allowedMethods())
-router.use('/api',addFilmTicket.routes(),addFilmTicket.allowedMethods())
+//退掉电影票
+const delFilmTicket = new Router();
+delFilmTicket.post('/delticket', checkToken, UserController.DelFilmTicket);
 
+//装载上面四个子路由
+router.use('/api',loginRouter.routes(), loginRouter.allowedMethods());
+router.use('/api',registerRouter.routes(), registerRouter.allowedMethods());
+router.use('/api',userRouter.routes(), userRouter.allowedMethods());
+router.use('/api',delUserRouter.routes(), delUserRouter.allowedMethods());
+router.use('/api',getUserRouter.routes(), getUserRouter.allowedMethods());
+router.use('/api',addFilmTicket.routes(), addFilmTicket.allowedMethods());
+router.use('/api',delFilmTicket.routes(), delFilmTicket.allowedMethods());
 
 
 //加载路由中间件

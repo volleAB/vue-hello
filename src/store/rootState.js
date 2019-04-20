@@ -4,12 +4,13 @@ const state = {
   // token: 'window.sessionStorage.getItem',
   username: '', //用户名
   filmIndex: Number,
-  bannerList: [], //头部滚动
+  // bannerList: [], //头部滚动
   hotList: [],  //热映电影
   city: '武汉',  //当前城市
   canNavBar: true,  //底部栏是否显示
   cinema: {},  //电影院数据
-  cookieUserName: ''  //测试cookie
+  cookieUserName: '',  //测试cookie
+  filmTickets: []
 }
 
 export default state;
