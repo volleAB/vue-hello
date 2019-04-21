@@ -63,6 +63,9 @@ body {
         color: #797d82;
         text-align: left;
         background-color: #ffffff;
+        .hidden {
+          height: 36px;
+        }
       }
       .film-name {
         width: 50%;
@@ -97,9 +100,7 @@ body {
         cursor: pointer;
         text-align: center;
       }
-      .hidden {
-        height: 36px;
-      }
+
       .scrollbar {
         overflow-x: auto;
         &::-webkit-scrollbar {

@@ -153,6 +153,7 @@ export default {
   },
   destroyed() {
     window.removeEventListener('scroll', this.getMoreList);
+    this.openMessage = null;
   },
   methods: {
     goBack () {

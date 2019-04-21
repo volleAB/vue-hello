@@ -1,5 +1,6 @@
 #cinema {
   color: #000;
+  overflow: hidden;
   @at-root {
     .cinema-name {
       padding: 40px 0 20px 0;

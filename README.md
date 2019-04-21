@@ -2,19 +2,12 @@
 
 > A Vue.js project
 
-因为卖座网升级了，它的接口变了，比较菜，没能弄懂他这个接口是咋弄的，现在的话就用一些静态数据来作为展示的内容
-
-**Sorry**
-
-尽快完成升级
-:hammer_and_wrench::hammer_and_wrench::hammer_and_wrench:。
-
 ## Start Project
 
 ``` bash
 
 # start server
-node server.js
+npm run server
 
 # serve with hot reload at localhost:8080
 npm run dev
@@ -22,7 +15,7 @@ npm run dev
 # server
 
 服务是用koa2+MongoDB搭建的，使用Mongoose连接数据库，实现数据的增删改查。
-有用户注册登陆的功能，添加喜欢的电影，添加标签……
+有用户注册登陆的功能，购买退订电影票的功能，添加标签等
 
 # other
 使用Vue2搭建，没有用其他的UI库，本来想用Element的，但是忘记了0.0
@@ -57,11 +50,13 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 ## Version 1.0
 
-![image](./lalala.gif)
+![image](./v1.gif)
 
 ## Version 2.0
 
-![image](./v2.jpg)
+![image](./v2.gif)
+
+卖座网的接口不能直接使用了，一些数据都是用的本地的，但是用户的服务是要在本地自己开启一下的。
 
 ## Thanks
 

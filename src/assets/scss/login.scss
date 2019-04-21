@@ -91,10 +91,6 @@
         font-size: 22px;
         text-align: left;
       }
-      .hidden {
-        color: #c4c4c4;
-        text-decoration: line-through;
-      }
       .el-button {
         padding: 10px 12px;
       }
@@ -110,8 +106,8 @@
       border-radius: 10% 10% 0 0;
       transform: translateX(-50%);
       background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
-      transition: all .8s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-      // overflow: hidden;
+      transition: bottom .8s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+      overflow: hidden;
       &:before {
         position: absolute;
         top: -60px;
@@ -143,18 +139,24 @@
       height: 200vw;
       max-height: 500px;
       margin: 80px 40px 0 40px;
+      padding-bottom: 100px;
       overflow-y: auto;
     }
     .filmTic-list {
+      height: auto;
       font-size: 18px;
-      li {
-        display: flex;
-        justify-content: flex-start;
-        justify-items: center;
-        align-items: center;
-        text-align: left;
-        color: #fff;
+      .hidden {
+        color: #c4c4c4;
+        text-decoration: line-through;
       }
+    }
+    .filmTic-list-item {
+      display: flex;
+      justify-content: flex-start;
+      justify-items: center;
+      align-items: center;
+      text-align: left;
+      color: #fff;
     }
     .tic-info {
       padding-right: 10px;
@@ -188,6 +190,7 @@
   width: 100%;
   top: 200px;
   backface-visibility: hidden;
+  transition: all .4s ease-in-out;
 }
 
 

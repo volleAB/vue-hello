@@ -16,11 +16,11 @@
           </li>
         </ul>
       </div>
-      <div>
+      <!-- <div> -->
         <div class="filmTic" :class="{active : check}">
           <div class="filmTic-list-box">
             <ul class="filmTic-list">
-              <li v-for="(tic, index) in filmTics" :key="index" :class="{hidden : !tic.effective}">
+              <li class="filmTic-list-item" v-for="(tic, index) in filmTics" :key="index" :class="{hidden : !tic.effective}">
                 <div class="tic-info">
                   {{tic.date}}
                   {{tic.row}}排
@@ -37,7 +37,7 @@
             <span class="iconfont icon-close"></span>
           </div>
         </div>
-      </div>
+      <!-- </div> -->
 
     </div>
   </div>
@@ -86,14 +86,7 @@ export default {
       axios.delFilmTicket(data)
         .then((res) => {
           console.log(res);
-          axios.getOneUser(data)
-            .then(({ data }) => {
-              console.log(data);
-              let reg = /^(2+\d{3})/;
-              this.userName = data.data.username;
-              this.creatTime = data.data.create_time.match(reg)[0];
-              this.filmTics = data.data.film_tickets;
-            })
+          this.filmTics.splice([data.index], 1);
         }, (err) => {
           console.log(err);
         })
