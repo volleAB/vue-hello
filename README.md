@@ -2,6 +2,16 @@
 
 > A Vue.js project
 
+## Version 2.0
+
+![image](./v2.gif)
+
+卖座网的接口不能直接使用了，也没弄懂他是有什么限制的，所以现在电影的数据都是用本地的，但是用户的服务是要在本地自己开启一下的。
+
+## Version 1.0
+
+![image](./v1.gif)
+
 ## Start Project
 
 ``` bash
@@ -47,16 +57,6 @@ npm test
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-
-## Version 1.0
-
-![image](./v1.gif)
-
-## Version 2.0
-
-![image](./v2.gif)
-
-卖座网的接口不能直接使用了，一些数据都是用的本地的，但是用户的服务是要在本地自己开启一下的。
 
 ## Thanks
 
